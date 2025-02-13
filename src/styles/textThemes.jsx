@@ -12,7 +12,7 @@ const theme = createTheme({
       fontWeight: 600,
     },
     body1: {
-      fontSize: '1rem', // Default text
+      fontSize: '0.95rem', // Default text
       fontWeight: 300,
     },
     button: {

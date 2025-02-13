@@ -52,16 +52,33 @@ function HeroSection() {
       </Box>
       
       {/* Content */}
-      <Grid container sx={{height:'100%',width:'100vw',padding:'12%',zIndex: 300,display:'flex'}}>
+      <Grid container sx={{height:'100%',width:'100vw',paddingTop:'14%',zIndex: 300,display:'flex'}}>
         <Grid item md={8} sx={{  color: 'white',  textAlign: 'left' }}>
           <Typography variant="h1">Business Boost Society</Typography>
           <Typography variant='body1'>Unlock your full potential through our exclusive community of entrepreneurs & achieve success through group accountability and support.</Typography>
         </Grid>
-        <Grid item md={4} sx={{justifyContent:'right'}}>
-          <Button variant="contained" color="warning" sx={{ my: 2, backgroundColor:'rgba(228, 103, 3, 1)', borderRadius:'6px' }}>
-            Know more →
-          </Button>
-        </Grid>  
+        <Grid item md={4} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Button 
+          variant="contained" 
+          color="warning" 
+          sx={{ 
+            my: 6, 
+            background: 'linear-gradient(rgba(228,103,3,1), rgba(199,52,13,1))', // Gradient background
+            borderRadius: '10px', 
+            height: '60px', 
+            width: 'auto', 
+            padding: '2% 10%', 
+            gap: '20px', 
+            fontWeight: 'bold', // Make "Know more" bold
+            '& .MuiButton-endIcon': { 
+              marginLeft: '0.5rem', // Increase space between text and arrow
+              fontSize: '2rem', // Increase arrow size
+            }
+          }}
+        >
+          Know more <span style={{ fontSize: '1.2rem', marginLeft: '10px' }}>→</span> {/* Increased arrow size and spacing */}
+        </Button>
+        </Grid>
       </Grid>
     </Box>
   )
