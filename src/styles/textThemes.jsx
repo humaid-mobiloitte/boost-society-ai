@@ -12,8 +12,9 @@ const theme = createTheme({
       fontWeight: 600,
     },
     body1: {
-      fontSize: '0.95rem', // Default text
+      fontSize: '1rem', // Default text
       fontWeight: 300,
+      color:"darkslategrey"
     },
     button: {
       textTransform: 'none', // Keep button text normal case

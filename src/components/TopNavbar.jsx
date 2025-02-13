@@ -16,6 +16,7 @@ const TopNavbarStyles = {
     overflowX: 'hidden', // Prevents horizontal scrolling
     backgroundColor: 'white', // Optional: Set a background color for visibility
     zIndex: 1000, // Ensures the navbar is above other content
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Softer shadow effect
   },
   links: {
     display: { xs: 'none', md: 'flex' }, // Hide links on small screens
@@ -78,8 +79,8 @@ function TopNavbar() {
       {/* Links in the middle (hidden on small screens) */}
       <Box sx={TopNavbarStyles.links}>
         <Typography variant="body1">About Us</Typography>
-        <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
-        <Typography variant="body1">Partners & Project</Typography>
+        {/* <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
+        <Typography variant="body1">Partners & Project</Typography> */}
         <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
         <Typography variant="body1">Cohort</Typography>
         <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />

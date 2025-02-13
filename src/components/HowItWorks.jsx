@@ -10,7 +10,7 @@ const steps = [
 
 const CircleImage = styled("img")({
   width: "100%",
-  maxWidth: "500px",
+  maxWidth: "660px",
   borderRadius: "50%",
 //   border: "8px solid white",
 //   objectFit: "cover",
@@ -50,7 +50,7 @@ const HowItWorks = () => {
           position: "absolute",
           right: 0,
           bottom: 0,
-          width: "100vw", // Adjust the size as needed
+          width: "100%", // Adjust the size as needed
           height: "auto",
           zIndex: 2, // Ensure it's above the translucent layer
         }}
