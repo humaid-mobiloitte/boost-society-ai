@@ -1,19 +1,26 @@
 import React from 'react'
 import { Box,Typography,Grid, Button } from '@mui/material'
 
+
+
+const style = {
+  
+  box1:{ 
+    position: 'relative', 
+    backgroundImage: "url('src/assets/heroSectionImages/hero_section_background_image.png')", 
+    backgroundSize: 'cover', 
+    backgroundPosition: 'center', 
+    height: '90vh', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center' 
+  }
+}
+
 function HeroSection() {
   return (
     <Box 
-      sx={{ 
-        position: 'relative', 
-        backgroundImage: "url('src/assets/heroSectionImages/hero_section_background_image.png')", 
-        backgroundSize: 'cover', 
-        backgroundPosition: 'center', 
-        height: '90vh', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center' 
-      }}
+      sx={style.box1}
     >
       {/* Translucent Overlay */}
       <Box 

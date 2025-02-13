@@ -1,29 +1,27 @@
 import React from 'react'
-import TopNavbar from '../Layouts/TopNavbar'
-import HeroSection from '../Layouts/HeroSection'
-import CollaborativePartners from '../Layouts/CollaborativePartners'
-import CollaborativeProjects from '../Layouts/CollaborativeProjects'
-import KeyFeatures from '../Layouts/KeyFeaturesBenefits'
-import HowItWorks from '../Layouts/HowItWorks'
-import TestimonialCarousel from '../Layouts/TestimonialCarousel'
-import SubscriptionSection from '../Layouts/SubscriptionSection'
-import Footer from '../Layouts/Footer'
-import Footnote from '../Layouts/Footnote'
+import TopNavbar from '../components/TopNavbar'
+import HeroSection from '../components/HeroSection'
+import CollaborativePartners from '../components/CollaborativePartners'
+import CollaborativeProjects from '../components/CollaborativeProjects'
+import KeyFeatures from '../components/KeyFeaturesBenefits'
+import HowItWorks from '../components/HowItWorks'
+import TestimonialCarousel from '../components/TestimonialCarousel'
+import SubscriptionSection from '../components/SubscriptionSection'
+import Footer from '../components/Footer'
+import Footnote from '../components/Footnote'
+import GuestLayout from '../Layouts/GuestLayout'
 
 function LandingPage() {
   return (
-    <div>
-      <TopNavbar/>
-      <HeroSection/>
-      <CollaborativePartners/>
-      <CollaborativeProjects/>
-      <KeyFeatures/>
-      <HowItWorks/>
-      <TestimonialCarousel/>
-      <SubscriptionSection/>
-      <Footer/>
-      <Footnote/>
-    </div>
+    <GuestLayout>
+       <HeroSection/>
+       <CollaborativePartners/>
+       <CollaborativeProjects/>
+       <KeyFeatures/>
+       <HowItWorks/>
+       <TestimonialCarousel/>
+       
+    </GuestLayout>
   )
 }
 
