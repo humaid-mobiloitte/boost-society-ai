@@ -85,11 +85,11 @@ const CollaborativePartners = () => {
   };
 
   return (
-    <Box textAlign="center" py={5} position="relative">
+    <Box textAlign="center" py={5} position="relative" px="5%">
       <Typography variant="h3" fontWeight={600} gutterBottom>
         Collaborative Partners
       </Typography>
-      <Typography variant="body1" mx="auto" mb={3} sx={{ fontSize: "1.1rem" }}>
+      <Typography variant="body1" mb={3} sx={{ fontSize: "1.1rem" }}>
       Our collaborative projects have been at the forefront of innovation, solving complex challenges and achieving remarkable outcomes. Here are some notable projects we have undertaken in collaboration with our partners
       </Typography>
 
@@ -131,27 +131,32 @@ const CollaborativePartners = () => {
               <Card
               key={idx}
               sx={{
-                width: "300px",
+                width: "400px",
                 textAlign: "left",
                 p: 3,
                 boxShadow: 3,
-                minHeight: "300px",
+                minHeight: "400px",
                 display: "flex",
                 flexDirection: "column",
+                // alignItems:'left',
                 justifyContent: "space-between",
                 margin: "0 10px",
                 position: "relative", // Ensures child elements can be positioned absolutely
                 overflow: "hidden", // Prevents the image from overflowing outside
-                backgroundColor: idx % 2 == 0 ? "rgba(82,49,104,0.1)" : "rgba(255,188,109,0.1)", // Alternating background colors
+                backgroundColor: idx % 2 == 0 ? "rgba(82,49,104,0.15)" : "rgba(255,188,109,0.15)", // Alternating background colors
               }}
             >
-              <img src={partner.logo} alt={partner.name} width={60} height="auto" />
+              
               <CardContent>
-                <Typography variant="h6" fontWeight={600}>
+                <img src={partner.logo} alt={partner.name} width={60} height="auto" />
+                <Typography variant="h5" fontWeight={600}>
                   {partner.name}
                 </Typography>
                 <Typography variant="body2">{partner.description}</Typography>
-                <Box sx={{display:"flex", alignItems:'center'}}><Typography variant="button">Learn more</Typography><EastIcon/></Box>
+                <Box sx={{display:"flex", alignItems:'center',paddingTop:'5%',gap:2,color:'#542F03'}}>
+                  <Typography variant="h6">Learn more</Typography>
+                  <EastIcon/>
+                </Box>
               </CardContent>
             
               {/* Stroke Image positioned at the bottom left */}
