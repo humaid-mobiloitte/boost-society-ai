@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Card, CardContent, Button, useMediaQuery, Fade } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import EastIcon from '@mui/icons-material/East';
 
 const partners = [
   {
@@ -150,6 +151,7 @@ const CollaborativePartners = () => {
                   {partner.name}
                 </Typography>
                 <Typography variant="body2">{partner.description}</Typography>
+                <Box sx={{display:"flex", alignItems:'center'}}><Typography variant="button">Learn more</Typography><EastIcon/></Box>
               </CardContent>
             
               {/* Stroke Image positioned at the bottom left */}

@@ -4,7 +4,7 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Outfit',
     h1: {
-      fontSize: '4rem', // Large for main headings
+      fontSize: '4.2rem', // Large for main headings
       fontWeight: 700, // Bold
     },
     h2: {
@@ -12,8 +12,8 @@ const theme = createTheme({
       fontWeight: 600,
     },
     body1: {
-      fontSize: '1rem', // Default text
-      fontWeight: 300,
+      fontSize: '0.95rem', // Default text
+      fontWeight: 500,
       color:"darkslategrey"
     },
     button: {

@@ -1,32 +1,28 @@
-import { Box, Typography, TextField, Button } from "@mui/material";
+import { Box, Typography, TextField, Button, Grid } from "@mui/material";
 
 const SubscriptionSection = () => {
   return (
-    <Box
+    <Grid container
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
         backgroundColor: "#4F2D66",
         color: "white",
-        p: { xs: 3, md: 6 },
-        // borderRadius: "0 0 50px 50px",
-        flexWrap: "wrap",
-        gap: 2,
+        px:'5%',
+        py:'2%',
       }}
     >
-      <Box sx={{ maxWidth: "500px" }}>
+      <Grid item md={6} xs={12} sx={{paddingRight:{xs:0,md:'20%'}}}>
         <Typography variant="h4" fontWeight={700} gutterBottom>
           Be The First To Know
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" sx={{color:'white'}}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </Typography>
-      </Box>
-      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+      </Grid>
+
+      <Grid item md={6} xs={12} sx={{display:'flex', alignItems:'center',justifyContent:'space-between', paddingLeft:{xs:0,md:'10%'}, gap:2}}>
         <TextField
           variant="outlined"
-          placeholder="Your email address"
+          placeholder="Enter your email address"
           sx={{
             backgroundColor: "white",
             borderRadius: 1,
@@ -46,8 +42,8 @@ const SubscriptionSection = () => {
         >
           Subscribe
         </Button>
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 

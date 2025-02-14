@@ -1,0 +1,19 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll; /* Allow vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    margin: 0;
+  
+  }
+  
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0px; /* Hide scrollbar */
+    background: transparent; /* Optional: Make it invisible */
+  }
+  
+  html {
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }

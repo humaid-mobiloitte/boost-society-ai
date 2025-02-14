@@ -23,15 +23,15 @@ export default function KeyFeatures() {
   }}
 >
   {/* Left Content */}
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12} md={5}>
     <Typography variant="h6" color="error" gutterBottom>
       Key Features & Benefits
     </Typography>
-    <Typography variant="h4" fontWeight={700} gutterBottom>
-      Unlocking Entrepreneurs Potential:
+    <Typography variant="h3" fontWeight={700} gutterBottom>
+      Unlock Exclusive Resources and Opportunities
     </Typography>
     <Typography variant="body1" gutterBottom>
-      Introducing the BoostSociety.ai portal - your gateway to advanced business and technical functionality. Partner with us to host your educational, community, and business programs on our platform, benefiting from dynamic, expert-led cohorts and innovative tools. Enhance learning with interactive courses, robust community features, and seamless communication. Track progress efficiently and gain valuable insights with our monitoring tools. Elevate your organization and unlock your programs' full potential with BoostSociety.ai. Interested in joining one of our cohorts? Explore our offerings and apply TODAY!
+      Introducing the BoostSociety.ai portal - your gateway to advanced business and technical functionality. Partner with us to host your educational, community, and business programs on our platform, benefiting from dynamic, expert-led cohorts and innovative tools. Enhance learning with interactive courses, robust community features, and seamless communication.
     </Typography>
     <Button
       variant="contained"
@@ -47,7 +47,7 @@ export default function KeyFeatures() {
   </Grid>
 
   {/* Right Content (Feature Cards) */}
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12} md={7}>
     <Box
       sx={{
         display: "grid",

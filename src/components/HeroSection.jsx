@@ -1,64 +1,95 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Grid, Button } from "@mui/material";
+import EastIcon from '@mui/icons-material/East';
 
-const styles = {
+const boxStyles = {
   boxContainer: {
     display: "flex",
     overflow: "hidden",
     position: "relative",
     width: "100%",
     height: "95vh",
+    right: 0,
   },
   slide: (translateX) => ({
     position: "absolute",
     width: "100%",
     height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     transition: "transform 1s ease-in-out",
     transform: `translateX(${translateX}%)`,
   }),
-  contentBox: {
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    height: "100%",
-    width: "100%",
+  indicatorContainer: {
+    position: "absolute",
+    bottom: "20px",
+    left: "50%",
+    transform: "translateX(-50%)",
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    gap: "10px",
   },
-  button: {
-    my: 6,
-    background: "linear-gradient(rgba(228,103,3,1), rgba(199,52,13,1))",
-    borderRadius: "10px",
-    height: "60px",
-    padding: "2% 10%",
-    fontSize: "1.2rem",
+  indicator: (isActive) => ({
+    width: "12px",
+    height: "12px",
+    borderRadius: "50%",
+    backgroundColor: isActive ? "#e46703" : "#ffffffbf",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+  }),
+};
+
+const imageStyles = {
+  imageContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    zIndex: -1,
   },
 };
 
-// ✅ Reusable Slide Component
+const contentBoxStyles = {
+  contentBox: {
+    position: "relative",
+    height: "95vh",
+    width: "100vw",
+    zIndex: 1,
+  },
+};
+
+const buttonStyles = {
+  button: {
+    background: "linear-gradient(98deg, #e46703 -1.68%, #c7340d 103.45%)",
+    borderRadius: "10px",
+    height: "60px",
+    padding: "1% 8%",
+    fontSize: "1.2rem",
+    fontFamily: 'arial',
+  },
+};
+
+// Reusable Slide Component
 const HeroSlide = ({ heading, subheading, image, translateX }) => (
-  <Box
-    sx={{
-      ...styles.slide(translateX),
-      backgroundImage: `url(${image})`,
-    }}
-  >
-    <Grid container sx={{ height: "100%", zIndex: 300, py: 36 }}>
-      <Grid item md={8} sx={{ color: "white", textAlign: "left" }}>
-        <Typography variant="h1">{heading}</Typography>
-        <Typography variant="body1" sx={{ fontSize: "1.2rem",fontWeight:'400',color:'silver' }}>
-          {subheading}
-        </Typography>
+  <Box sx={{ ...boxStyles.slide(translateX) }}>
+    <img src={image} alt="background" style={imageStyles.imageContainer} />
+    <Box sx={{ ...contentBoxStyles.contentBox, px: "5%" }}>
+      <Grid container sx={{ py: { xs: 12, md: 27 } }}>
+        {/* left content */}
+        <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight:{md:19}, maxWidth:{md:'94%',xs:'94%'} }}>
+          {/* CHOTI SCREEENS K LIYE FONT SIZE UPAR NEECHE KRKE DEKH LENA */}
+          <Typography variant="h1" >{heading}</Typography>
+          <Typography variant="body1" sx={{ fontSize: "1.2rem", fontWeight: '400', color: '#ffffffbf' }}>
+            {subheading}
+          </Typography>
+        </Grid>
+        {/* right content */}
+        <Grid item md={5} xs={12} sx={{ py: { xs: 6, md: 16 }, paddingLeft:{md:7} }}>
+          <Button variant="contained" sx={{ ...buttonStyles.button, fontWeight: '550', display: 'flex', gap: 4 }}>
+            Know more <EastIcon />
+          </Button>
+        </Grid>
       </Grid>
-      <Grid item md={4} sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button variant="contained" color="warning" sx={{...styles.button,fontWeight:'600' }}>
-          Know more <span style={{ fontSize: "1.2rem", marginLeft: "10px"}}>→</span>
-        </Button>
-      </Grid>
-    </Grid>
+    </Box>
   </Box>
 );
 
@@ -78,20 +109,32 @@ function HeroSection() {
         setTranslateX2(100); // Move second slide out to the left
         setActiveSlide(1);
       }
-    }, 5000); // Change slide every 5 seconds
+    }, 80000); // Change slide every 8 seconds
 
     return () => clearInterval(interval);
   }, [activeSlide]);
 
+  const handleSlideChange = (slideNumber) => {
+    if (slideNumber === 1) {
+      setTranslateX1(0);
+      setTranslateX2(100);
+      setActiveSlide(1);
+    } else {
+      setTranslateX1(-100);
+      setTranslateX2(0);
+      setActiveSlide(2);
+    }
+  };
+
   return (
-    <Box sx={styles.boxContainer}>
+    <Box sx={boxStyles.boxContainer}>
       {/* First Slide */}
       <HeroSlide
         heading="Business BOOST! Society™"
         subheading="Welcome to Business BOOST! Society™. Join a community of like-minded business
         owners committed to positive impact and sustainable growth. At Business BOOST!
         Society™, we connect strategic vision with tangible results."
-        image="src/assets/heroSectionImages/hero_section_background_image.png"
+        image="src/assets/heroSectionImages/website_background_hero.png"
         translateX={translateX1}
       />
 
@@ -100,11 +143,16 @@ function HeroSection() {
         heading="BoostSociety.Ai"
         subheading="We offer a cutting-edge platform for hosting various programs, featuring
         expert-led cohorts & advanced tools. Explore dynamic partnership opportunities
-        and see how we can elevate your organization or help you join one of our
-        transformative cohorts!"
-        image="src/assets/heroSectionImages/hero_section_background_image.png"
+        and see how we can elevate your organization."
+        image="src/assets/heroSectionImages/hero_section_bg_img2.png"
         translateX={translateX2}
       />
+
+      {/* Slide Indicators */}
+      <Box sx={boxStyles.indicatorContainer}>
+        <Box sx={boxStyles.indicator(activeSlide === 1)} onClick={() => handleSlideChange(1)} />
+        <Box sx={boxStyles.indicator(activeSlide === 2)} onClick={() => handleSlideChange(2)} />
+      </Box>
     </Box>
   );
 }
