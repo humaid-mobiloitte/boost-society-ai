@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Card, CardContent, Button, useMediaQuery, Fade } from "@mui/material";
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+// import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import EastIcon from '@mui/icons-material/East';
+import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRounded';
+import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
 
 const partners = [
   {
@@ -85,46 +87,43 @@ const CollaborativePartners = () => {
   };
 
   return (
-    <Box textAlign="center" py={5} position="relative" px="5%">
-      <Typography variant="h3" fontWeight={600} gutterBottom>
+    <Box textAlign="center" position="relative" px="5%">
+      <Typography variant="h3" fontWeight={600} py={5} sx={{fontSize:{md:'2.5rem', xs:'1.5rem'}}}>
         Collaborative Partners
       </Typography>
-      <Typography variant="body1" mb={3} sx={{ fontSize: "1.1rem" }}>
+      <Typography variant="body1" mb={3} sx={{fontSize:{md:'1.2rem', xs:'1rem'}}}>
       Our collaborative projects have been at the forefront of innovation, solving complex challenges and achieving remarkable outcomes. Here are some notable projects we have undertaken in collaboration with our partners
       </Typography>
 
       <Box display="flex" alignItems="center" justifyContent="center">
         {/* left arrow */}
-        <Button
-          onClick={handlePrev}
-          disabled={index === 0}
-          sx={{
-            backgroundColor: index === 0 ? "#ccc" : "#D76A03",
-            width: 50,
-            height: 50,
-            borderRadius: "50%",
-            minWidth: 0,
-            "&:hover": { backgroundColor: index === 0 ? "#ccc" : "#b85802" },
-          }}
-        >
-          <ArrowBackIos sx={{ color: "white" }} />
-        </Button>
+          <ArrowCircleLeftRoundedIcon
+            onClick={handlePrev}
+            disabled={index === 0}
+            sx={{
+              fontSize:'3.2rem',
+              color: index === 0 ? "#f0ab69" : "#D76A03",
+              cursor:'pointer',
+              position:'absolute',
+              left:'4%',
+              zIndex:1
+            }}
+          />
 
         {/* cards */}
         <Box
           display="flex"
           overflow="hidden"
-          mx={2}
-          width={`${itemsToShow * 320}px`}
-          sx={{ position: "relative" }}
+          // mx={2}
+          // width='100%'
+          // sx={{ position: "relative",flexGrow:2 }}
         >
           <Box
             display="flex"
             sx={{
-              transform: `translateX(-${index * 280}px)`,
+              transform: `translateX(-${index * 460}px)`,
               transition: transitioning ? "transform 0.3s ease-in-out" : "none",
-              paddingTop:'1%',
-              paddingBottom:"1%",
+              padding:'2% 0',
             }}
           >
             {partners.map((partner, idx) => (
@@ -133,32 +132,53 @@ const CollaborativePartners = () => {
               sx={{
                 width: "400px",
                 textAlign: "left",
-                p: 3,
+                p: '0.2% 1% 1% 1%',
                 boxShadow: 3,
-                minHeight: "400px",
+                // minHeight: "400px",
                 display: "flex",
                 flexDirection: "column",
-                // alignItems:'left',
                 justifyContent: "space-between",
-                margin: "0 10px",
+                marginRight: "2.2rem",
                 position: "relative", // Ensures child elements can be positioned absolutely
                 overflow: "hidden", // Prevents the image from overflowing outside
-                backgroundColor: idx % 2 == 0 ? "rgba(82,49,104,0.15)" : "rgba(255,188,109,0.15)", // Alternating background colors
+                backgroundColor: idx % 2 == 0 ? "rgba(82,49,104,0.15)" : "rgba(230, 143, 45, 0.15)", // Alternating background colors
               }}
             >
               
-              <CardContent>
-                <img src={partner.logo} alt={partner.name} width={60} height="auto" />
-                <Typography variant="h5" fontWeight={600}>
-                  {partner.name}
-                </Typography>
-                <Typography variant="body2">{partner.description}</Typography>
-                <Box sx={{display:"flex", alignItems:'center',paddingTop:'5%',gap:2,color:'#542F03'}}>
-                  <Typography variant="h6">Learn more</Typography>
-                  <EastIcon/>
+              <CardContent
+              sx={{
+                display:'flex',
+                flexDirection:'column',
+                gap:2,
+                paddingLeft:0
+              }}
+              >
+                <Box sx={{display:'flex',alignItems:'center',justifyContent:'flex-start'}}>
+                <img src={partner.logo} alt={partner.name} width="auto" height={56}/>
+                </Box>
+                <Box sx={{display:'flex',flexDirection:'column',gap:2}}>
+                  <Typography variant="h5" fontWeight={600} sx={{fontSize:{md:'1.5rem',xs:'1rem'}}}>
+                    {partner.name}
+                  </Typography>
+                  <Typography variant="body2" sx={{fontSize:{md:'1rem',xs:'0.8rem'}}}>{partner.description}</Typography>
                 </Box>
               </CardContent>
-            
+              
+              {/* LEarn more aur arrow*/}
+              <Box 
+                sx={{
+                  display:"flex", 
+                  alignItems:'center',
+                  gap:1,
+                  color:'#542F03',
+                  position:"relative",
+
+                }}
+              >
+                <Typography variant="h6" sx={{fontSize:'1.2rem'}}>Learn more</Typography>
+                <EastIcon sx={{fontSize:'1.2rem'}}/>
+              </Box>
+
               {/* Stroke Image positioned at the bottom left */}
               <Box
                 component="img"
@@ -167,9 +187,8 @@ const CollaborativePartners = () => {
                   position: "absolute",
                   bottom: 0,
                   left: 0,
-                  width: "20%", // Adjust width relative to the card
+                  width: "24%", // Adjust width relative to the card
                   height: "auto",
-                  // opacity: 0.5, // Optional, adjust transparency if needed
                 }}
               />
             </Card>
@@ -179,20 +198,18 @@ const CollaborativePartners = () => {
         </Box>
 
           {/* right arrow */}
-        <Button
-          onClick={handleNext}
-          disabled={index + itemsToShow >= partners.length}
-          sx={{
-            backgroundColor: index + itemsToShow >= partners.length ? "#ccc" : "#D76A03",
-            width: 50,
-            height: 50,
-            borderRadius: "50%",
-            minWidth: 0,
-            "&:hover": { backgroundColor: index + itemsToShow >= partners.length ? "#ccc" : "#b85802" },
-          }}
-        >
-          <ArrowForwardIos sx={{ color: "white" }} />
-        </Button>
+          <ArrowCircleRightRoundedIcon
+            onClick={handleNext}
+            disabled={index + itemsToShow >= partners.length}
+            sx={{
+              color: index + itemsToShow >= partners.length ? "#f0ab69" : "#D76A03",
+              fontSize:'3.2rem',
+              cursor:'pointer',
+              position:'absolute',
+              right:'4%',
+              zIndex:1
+            }}
+          />
       </Box>
     </Box>
   );

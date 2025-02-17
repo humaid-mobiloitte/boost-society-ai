@@ -8,8 +8,10 @@ const boxStyles = {
     overflow: "hidden",
     position: "relative",
     width: "100%",
-    height: "95vh",
+    // GPC, OG height:'95%'
+    height: "90vh",
     right: 0,
+
   },
   slide: (translateX) => ({
     position: "absolute",
@@ -39,8 +41,8 @@ const boxStyles = {
 const imageStyles = {
   imageContainer: {
     position: "absolute",
-    top: 0,
-    left: 0,
+    // top: 0,
+    // left: 0,
     width: "100%",
     height: "100%",
     objectFit: "cover",
@@ -61,11 +63,11 @@ const buttonStyles = {
   button: {
     background: "linear-gradient(98deg, #e46703 -1.68%, #c7340d 103.45%)",
     borderRadius: "10px",
-    height: "60px",
-    padding: "1% 8%",
-    fontSize: "1.2rem",
-    fontFamily: 'arial',
-  },
+    fontFamily: "arial",
+    height: { xs: "40px", sm: "45px", md: "60px" },
+    padding: { xs: "0.3% 3%", md: "1% 8%" },
+    fontSize: { xs: "0.8rem", md: "1.2rem" },
+  }
 };
 
 // Reusable Slide Component
@@ -75,17 +77,18 @@ const HeroSlide = ({ heading, subheading, image, translateX }) => (
     <Box sx={{ ...contentBoxStyles.contentBox, px: "5%" }}>
       <Grid container sx={{ py: { xs: 12, md: 27 } }}>
         {/* left content */}
-        <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight:{md:19}, maxWidth:{md:'94%',xs:'94%'} }}>
+        {/* PADDING RIGHT GPC KIYA HU, WESE ZADA THA */}
+        <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight:{md:6, xs:'5%'}, maxWidth:{md:'94%',xs:'94%'} }}>
           {/* CHOTI SCREEENS K LIYE FONT SIZE UPAR NEECHE KRKE DEKH LENA */}
-          <Typography variant="h1" >{heading}</Typography>
-          <Typography variant="body1" sx={{ fontSize: "1.2rem", fontWeight: '400', color: '#ffffffbf' }}>
+          <Typography variant="h1" sx={{fontSize:{xs:'1.5rem', md:'4.2rem'}}}>{heading}</Typography>
+          <Typography variant="body1" sx={{ fontSize:{xs:'0.9rem',md:'1.2rem'}, fontWeight: '400', color: '#ffffffbf' }}>
             {subheading}
           </Typography>
         </Grid>
         {/* right content */}
-        <Grid item md={5} xs={12} sx={{ py: { xs: 6, md: 16 }, paddingLeft:{md:7} }}>
-          <Button variant="contained" sx={{ ...buttonStyles.button, fontWeight: '550', display: 'flex', gap: 4 }}>
-            Know more <EastIcon />
+        <Grid item md={5} xs={12} sx={{ py: { xs: 6, md: 14 }, paddingLeft:{md:2} }}>
+          <Button variant="contained" sx={{ ...buttonStyles.button, fontWeight: '550', display: 'flex', gap: {md:4,xs:1} }}>
+            Know more <EastIcon sx={{fontSize:{md:24,xs:12}}}/>
           </Button>
         </Grid>
       </Grid>
@@ -109,7 +112,7 @@ function HeroSection() {
         setTranslateX2(100); // Move second slide out to the left
         setActiveSlide(1);
       }
-    }, 80000); // Change slide every 8 seconds
+    }, 16000); // Change slide every 16 seconds
 
     return () => clearInterval(interval);
   }, [activeSlide]);

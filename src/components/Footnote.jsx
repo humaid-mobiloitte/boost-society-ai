@@ -8,7 +8,7 @@ const Footnote = () => {
         backgroundColor: "rgba(82, 49, 104, 1)",
         color: "white",
         py: 2,
-        px: 4,
+        px: "5%",
       }}
     >
       <Grid container justifyContent="space-between" alignItems="center">

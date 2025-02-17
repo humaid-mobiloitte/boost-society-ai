@@ -23,8 +23,8 @@ const HowItWorks = () => {
         position: "relative", 
         background: "url('src/assets/HowDoesItWork/background_blurred_image.png')", 
         color: "white", 
-        py: 20, 
-        px: { xs: 2, md: 10 },
+        py: 5, 
+        px: '5%',
         overflow: "hidden", // Ensure the image doesn't overflow the container
       }}
     >
@@ -58,41 +58,31 @@ const HowItWorks = () => {
 
       <Grid container spacing={4} alignItems="center" sx={{ position: "relative", zIndex: 3 }}>
         {/* Left Content */}
-        <Grid item xs={12} md={6}>
-          <Typography variant="overline" sx={{ color: "#fff" }}>Check Out</Typography>
-          <Typography variant="h4" sx={{ color: "#f97316", fontWeight: "bold", mb: 2 }}>
+        <Grid item xs={12} md={6} sx={{color:'white'}}>
+          <Typography sx={{ color:'white',fontSize:{xs:'0.9rem',md:'1.2rem'}}}>Next steps:</Typography>
+          <Typography sx={{fontSize:{xs:'1.5rem', md:'4.2rem'},color:'rgb(218, 100, 5)}}'}} gutterBottom>
             How Does It Work
           </Typography>
-          <Box sx={{display:'flex'}}>
-            {/* b */}
-          <List>
-            {steps.map((step, index) => (
-              <ListItem key={index}>
-                <Box sx={{ width: 10, height: 10, border: "2px solid white", borderRadius: "50%", mr: 2 }} />
-                <ListItemText primary={step} />
-              </ListItem>
-            ))}
-          </List>
-            <Box>
-              {/* a */}
-              <Typography variant="h5" fontWeight="bold" gutterBottom>
-                01. Create an account
-              </Typography>
-              {/* a */}
-              <Typography variant="body1" paragraph>
-                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demon strate the visual form of a document or a type face without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.{' '}
-              </Typography>
-          {/* a */}
-          <Typography>
-            In publishing and graphic design, Lorem ipsum is a placeholder text commonly visual form of docu ment or a typeface without relying on  content.
-          </Typography>
-          {/* a */}
-          <Button variant="contained" sx={{ backgroundColor: "#f97316", mt: 2 }}>
-            Explore Whitepaper
-          </Button>
-          </Box>
-          </Box>
-          
+          <ul>
+            <li>
+              For Prospective Partners:
+              <ol>
+                <li>Review the features and benefits on this page.</li>
+                <li>Email us with information regarding your interest in a strategic partnership. You can expect a follow-up within 48-72 business hours.</li>
+                <li>Join our vibrant community at BusinessBoostSociety.com to take advantage of personalized insights, expert advice, exclusive events, collaboration opportunities, and other resources.</li>
+              </ol>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              For Students, Entrepreneurs, or Existing Business Owners Interested in a Cohort:
+            </li>
+            <ol>
+              <li>Review the features and benefits on this page.</li>
+              <li>Browse our list of cohorts, select a cohort and apply! You can expect a decision according to the info included in the application details.</li>
+              <li>Join BusinessBoostSociety.com for personalized insights, expert advice, exclusive events, and collaboration opportunities.</li>
+            </ol>
+          </ul>
         </Grid>
 
         {/* Right Content (Image) */}

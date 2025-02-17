@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Typography, Card, CardContent, CardMedia, Button, Box, useMediaQuery } from "@mui/material";
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRounded';
+import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
+import EastIcon from '@mui/icons-material/East';
+
 
 const projects = [
   {
@@ -48,7 +51,7 @@ const CollaborativeProjects = () => {
   };
 
   return (
-    <Box sx={{ position: "relative", textAlign: "center", py: 5, backgroundColor: "rgba(251, 251, 251, 1)" }}>
+    <Box sx={{ position: "relative", textAlign: "center", py: 8, backgroundColor: "rgba(251, 251, 251, 1)",px:'5%' }}>
       {/* Bottom Decorative Stroke */}
       <Box
         component="img"
@@ -60,40 +63,39 @@ const CollaborativeProjects = () => {
           left: 0,
           width: "100%",
           zIndex: 0,
+          display:{xs:'none',md:'block'}
         }}
       />
-      <Typography variant="h3" fontWeight={600} gutterBottom sx={{ zIndex: 1 }}>
+      <Typography variant="h3" fontWeight={600} gutterBottom sx={{fontSize:{md:'2.5rem', xs:'1.5rem'}}}>
         Collaborative Projects
       </Typography>
-      <Typography variant="body1"  mx="auto" mb={3} sx={{ zIndex: 1 }}>
+      <Typography variant="body1"  mx="auto" mb={3} sx={{fontSize:{md:'1.2rem', xs:'1rem'}}}>
       Our collaborative projects have been at the forefront of innovation, solving complex challenges and achieving remarkable outcomes. Here are some notable projects we have undertaken in collaboration with our partners
       </Typography>
 
       {/* Navigation and Sliding Cards */}
-      <Box display="flex" alignItems="center" justifyContent="center">
+      <Box display="flex" alignItems="center">
         {/* Left Arrow */}
-        <Button
-          onClick={handlePrev}
-          disabled={index === 0}
-          sx={{
-            backgroundColor: index === 0 ? "#ccc" : "#D76A03",
-            width: 50,
-            height: 50,
-            borderRadius: "50%",
-            minWidth: 0,
-            "&:hover": { backgroundColor: index === 0 ? "#ccc" : "#b85802" },
-          }}
-        >
-          <ArrowBackIos sx={{ color: "white" }} />
-        </Button>
+        <ArrowCircleLeftRoundedIcon
+            onClick={handlePrev}
+            disabled={index === 0}
+            sx={{
+              fontSize:'3.2rem',
+              color: index === 0 ? "#f0ab69" : "#D76A03",
+              cursor:'pointer',
+              position:'absolute',
+              left:'4%',
+              zIndex:1
+            }}
+          />
 
         {/* Card Slider */}
         <Box
           display="flex"
           overflow="hidden"
-          mx={2}
-          width={`${itemsToShow * 360}px`}
-          sx={{ position: "relative" }}
+           
+          // width={`${itemsToShow * 360}px`}
+          // sx={{ position: "relative" }}
         >
           <Box
             display="flex"
@@ -108,50 +110,59 @@ const CollaborativeProjects = () => {
               <Card
                 key={idx}
                 sx={{
-                  width: "340px",
-                  borderRadius: 2,
-                  p: 1,
+                  width: "386px",
+                  height:'auto',
+                  borderRadius: 3,
+                  p: 3,
                   backgroundColor: "rgba(82, 49, 104, 1)",
-                  margin: "0 10px",
+                  marginRight: "2.2rem",
                   minHeight: "320px",
                   position: "relative",
                 }}
               >
                 <CardMedia
                   component="img"
-                  height="200"
+                  height="60%"
                   image={project.image}
                   alt="Project"
                   sx={{ borderRadius: 2 }}
                 />
                 <CardContent>
-                  <Typography variant="body2" sx={{ color: "white" }} paragraph>
+                  <Typography variant="body2" sx={{color:'white',fontSize:{md:'1rem',xs:'0.8rem'},textAlign:'justify', padding:'5% 0'}} paragraph>
                     {project.description}
                   </Typography>
-                  <Button size="small" sx={{ color: "#ff9800", textAlign: "left" }}>
-                    Learn more →
-                  </Button>
                 </CardContent>
+                <Box 
+                sx={{
+                  display:"flex", 
+                  alignItems:'center',
+                  gap:1,
+                  color:'#FFBC6D',
+                  position:"relative",
+
+                }}
+              >
+                <Typography variant="h6" sx={{fontSize:'1.2rem'}}>Learn more</Typography>
+                <EastIcon sx={{fontSize:'1.2rem'}}/>
+              </Box>
               </Card>
             ))}
           </Box>
         </Box>
 
         {/* Right Arrow */}
-        <Button
-          onClick={handleNext}
-          disabled={index + itemsToShow >= projects.length}
-          sx={{
-            backgroundColor: index + itemsToShow >= projects.length ? "#ccc" : "#D76A03",
-            width: 50,
-            height: 50,
-            borderRadius: "50%",
-            minWidth: 0,
-            "&:hover": { backgroundColor: index + itemsToShow >= projects.length ? "#ccc" : "#b85802" },
-          }}
-        >
-          <ArrowForwardIos sx={{ color: "white" }} />
-        </Button>
+        <ArrowCircleRightRoundedIcon
+            onClick={handleNext}
+            disabled={index + itemsToShow >= projects.length}
+            sx={{
+              color: index + itemsToShow >= projects.length ? "#f0ab69" : "#D76A03",
+              fontSize:'3.2rem',
+              cursor:'pointer',
+              position:'absolute',
+              right:'4%',
+              zIndex:1
+            }}
+          />
       </Box>
     </Box>
   );

@@ -2,6 +2,8 @@ import { Box, Button, Card, CardContent, Grid, Typography } from "@mui/material"
 import BusinessIcon from "@mui/icons-material/Business";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import GavelIcon from "@mui/icons-material/Gavel";
+import EastIcon from '@mui/icons-material/East';
+
 
 const features = [
   { icon: <BusinessIcon />, title: "Monitor & Measure",content:'Feature: Track quantifiable and qualitative results to monitor progress and performance. Benefit: Make data-driven decisions and continuously improve your strategies by measuring the impact of your efforts.' },
@@ -14,40 +16,62 @@ export default function KeyFeatures() {
   return (
     <Grid
   container
-  spacing={3}
+  spacing={{md:16, xs:2}}
   sx={{
-    p: 3,
+    px: "5%",
+    py:{md:'2%',xs:'7%'},
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   }}
 >
   {/* Left Content */}
-  <Grid item xs={12} md={5}>
-    <Typography variant="h6" color="error" gutterBottom>
+  <Grid item xs={12} md={12} lg={6}>
+    <Typography 
+      variant="h6" 
+      color="error"  
+      sx={{
+        fontSize: '1.2rem',
+        // fontFamily: 'sans-serif',
+        mb: 2 // Add margin-bottom for spacing
+      }}
+    >
       Key Features & Benefits
     </Typography>
-    <Typography variant="h3" fontWeight={700} gutterBottom>
+    <Typography 
+      variant="h3"  
+      sx={{
+        fontSize: { md: '2.5rem', xs: '1.5rem' },
+        mb: 2 // Add margin-bottom for spacing
+      }}
+    >
       Unlock Exclusive Resources and Opportunities
     </Typography>
-    <Typography variant="body1" gutterBottom>
+    <Typography 
+      variant="body1"  
+      sx={{
+        fontSize: { md: '1.2rem', xs: '1rem' },
+        mb: 2 // Add margin-bottom for spacing
+      }}
+    >
       Introducing the BoostSociety.ai portal - your gateway to advanced business and technical functionality. Partner with us to host your educational, community, and business programs on our platform, benefiting from dynamic, expert-led cohorts and innovative tools. Enhance learning with interactive courses, robust community features, and seamless communication.
     </Typography>
     <Button
       variant="contained"
-      color="warning"
       sx={{
-        my: 2,
-        backgroundColor: "rgba(228, 103, 3, 1)",
+        my: 2, // Maintain vertical margin for the button
+        background: "linear-gradient(98deg, rgb(228, 103, 3) -1.68%, rgb(199, 52, 13) 103.45%)",
+        padding: '1% 3%',
         borderRadius: "6px",
+        gap: 1
       }}
     >
-      View All Features →
+      View All Features <EastIcon sx={{ fontSize: { md: 20, xs: 8 } }} />
     </Button>
   </Grid>
 
   {/* Right Content (Feature Cards) */}
-  <Grid item xs={12} md={7}>
+  <Grid item xs={12} md={12} lg={6}>
     <Box
       sx={{
         display: "grid",
@@ -84,7 +108,7 @@ export default function KeyFeatures() {
           />
 
           <CardContent>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+            <Box sx={{ display: "flex",flexDirection:'column', alignItems: "left", mb: 1 }}>
               <Box
                 sx={{
                   width: 40,
@@ -92,7 +116,7 @@ export default function KeyFeatures() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  bgcolor: "rgba(228, 103, 3, 1)",
+                  backgroundImage: "linear-gradient(98deg, rgb(228, 103, 3) -1.68%, rgb(199, 52, 13) 103.45%)",
                   borderRadius: "50%",
                   color: "white",
                   mr: 1,
