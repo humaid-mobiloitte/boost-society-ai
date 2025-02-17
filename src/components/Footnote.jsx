@@ -11,30 +11,30 @@ const Footnote = () => {
         px: "5%",
       }}
     >
-      <Grid container justifyContent="space-between" alignItems="center">
+      <Grid container gap={2} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
         {/* Left Side - Copyright Info */}
-        <Grid item>
-          <Typography variant="body2">
+        <Grid item md={6} xs={12} >
+          <Typography variant="body2" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
             © 2023 Give Me a Boost | Integral Enterprise Limited
           </Typography>
         </Grid>
 
         {/* Right Side - Links */}
-        <Grid item>
+        <Grid item md={6} xs={12}>
           <Box sx={{ display: "flex", gap: 2 }}>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
               Terms & Conditions
             </Link>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}> 
               Privacy Policy
             </Link>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
               Cookies Policies
             </Link>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
               FAQs
             </Link>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
               Contact Us
             </Link>
           </Box>

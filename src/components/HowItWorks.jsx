@@ -23,7 +23,7 @@ const HowItWorks = () => {
         position: "relative", 
         background: "url('src/assets/HowDoesItWork/background_blurred_image.png')", 
         color: "white", 
-        py: 5, 
+        py: 15, 
         px: '5%',
         overflow: "hidden", // Ensure the image doesn't overflow the container
       }}

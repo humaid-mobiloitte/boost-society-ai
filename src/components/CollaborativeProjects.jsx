@@ -51,7 +51,7 @@ const CollaborativeProjects = () => {
   };
 
   return (
-    <Box sx={{ position: "relative", textAlign: "center", py: 8, backgroundColor: "rgba(251, 251, 251, 1)",px:'5%' }}>
+    <Box sx={{ position: "relative", textAlign: "center", py: 3, backgroundColor: "rgba(251, 251, 251, 1)",px:'5%' }}>
       {/* Bottom Decorative Stroke */}
       <Box
         component="img"
@@ -110,13 +110,13 @@ const CollaborativeProjects = () => {
               <Card
                 key={idx}
                 sx={{
-                  width: "386px",
+                  width: { xs: "90vw",sm:'270px', md: "330px", lg: "400px" },
                   height:'auto',
                   borderRadius: 3,
-                  p: 3,
+                  p:"1.5%",
                   backgroundColor: "rgba(82, 49, 104, 1)",
                   marginRight: "2.2rem",
-                  minHeight: "320px",
+                  // minHeight: "320px",
                   position: "relative",
                 }}
               >
@@ -127,8 +127,8 @@ const CollaborativeProjects = () => {
                   alt="Project"
                   sx={{ borderRadius: 2 }}
                 />
-                <CardContent>
-                  <Typography variant="body2" sx={{color:'white',fontSize:{md:'1rem',xs:'0.8rem'},textAlign:'justify', padding:'5% 0'}} paragraph>
+                <CardContent sx={{padding:0}}>
+                  <Typography variant="body2" sx={{color:'white',fontSize:{md:'1rem',sm:'0.8rem',xs:'0.8rem'},textAlign:'justify', padding:'5% 0'}}>
                     {project.description}
                   </Typography>
                 </CardContent>

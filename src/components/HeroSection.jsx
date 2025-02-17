@@ -9,7 +9,7 @@ const boxStyles = {
     position: "relative",
     width: "100%",
     // GPC, OG height:'95%'
-    height: "90vh",
+    height: {lg:"90vh", md:"90vh",sm:'50vh',xs:'50vh'},
     right: 0,
 
   },
