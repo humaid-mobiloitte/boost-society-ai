@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Button, Divider } from '@mui/material';
 import MenuIcon from './MenuIcon'; 
 import Brightness4Icon from '@mui/icons-material/Brightness4';
+import { data } from '../data/data';  // Importing the data
 
 const TopNavbarStyles = {
   outerBox: {
@@ -74,43 +75,36 @@ function TopNavbar() {
   return (
     <Box sx={TopNavbarStyles.outerBox}>
       <Box sx={TopNavbarStyles.innerBox}>
-        {/* MENU ICON AUR LOGO KO EK DABBE MEI BND KR DETA HU TAKI DISPLAY FLEX LGANE MEI DIKKAT NA AAYE */}
         <Box sx={{display:'flex',alignItems:'center', justifyContent:'center'}}>
-          {/* Menu Icon for small screens */}
           <Box sx={TopNavbarStyles.menuIcon}>
             <MenuIcon color="black" size={14} />
           </Box>
-          {/* Logo on the extreme left */}
           <Box sx={TopNavbarStyles.logo}>
             <img
-              src="src/assets/heroSectionImages/logo_businessBoostSociety.png"
-              alt="logo not found"
+              src={data.topNavbar.images.logo}  // Using image from the topNavbar data
+              alt={data.topNavbar.text.logoAlt}  // Using alt text from the topNavbar data
               style={{ width: '85%', height: 'auto', minWidth:'93.31px', minHeight:'25.59px' }}
             />
           </Box>
         </Box>
 
-        {/* Links in the middle (hidden on small screens) */}
         <Box sx={TopNavbarStyles.links}>
-          <Typography variant="body1" sx={{color:'black'}}>About Us</Typography>
+          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.aboutUs}</Typography>
           <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
-          <Typography variant="body1" sx={{color:'black'}}>Cohort</Typography>
+          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.cohort}</Typography>
           <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
-          <Typography variant="body1" sx={{color:'black'}}>Accelerator</Typography>
+          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.accelerator}</Typography>
           <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
-          <Typography variant="body1" sx={{color:'black'}}>Contact Us</Typography>
+          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.contactUs}</Typography>
         </Box>
 
-        {/* Signup, Login, Theme changer */}
         <Box sx={TopNavbarStyles.actions}>
-          <Button variant="button" sx={TopNavbarStyles.signupButton}>Sign up</Button>
-
-          {/* Login Button with Icon */}
+          <Button variant="button" sx={TopNavbarStyles.signupButton}>{data.topNavbar.text.signUpButton}</Button>
           <Button variant="button" sx={TopNavbarStyles.loginButton}>
-            Login
+            {data.topNavbar.text.loginButton}
             <img
-              src="src/assets/heroSectionImages/icon_on_login_button.png"
-              alt="login icon"
+              src={data.topNavbar.images.loginIcon}  // Using image from the topNavbar data
+              alt={data.topNavbar.text.loginIconAlt}  // Using alt text from the topNavbar data
               style={{ marginLeft: '0.5rem', width: '1rem', height: 'auto' }}
             />
           </Button>

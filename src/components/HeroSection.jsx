@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Grid, Button } from "@mui/material";
 import EastIcon from '@mui/icons-material/East';
+import { data } from "../data/data";
 
 const boxStyles = {
   boxContainer: {
@@ -8,10 +9,8 @@ const boxStyles = {
     overflow: "hidden",
     position: "relative",
     width: "100%",
-    // GPC, OG height:'95%'
-    height: {lg:"90vh", md:"90vh",sm:'50vh',xs:'50vh'},
+    height: { lg: "90vh", md: "90vh", sm: '50vh', xs: '50vh' },
     right: 0,
-
   },
   slide: (translateX) => ({
     position: "absolute",
@@ -41,8 +40,6 @@ const boxStyles = {
 const imageStyles = {
   imageContainer: {
     position: "absolute",
-    // top: 0,
-    // left: 0,
     width: "100%",
     height: "100%",
     objectFit: "cover",
@@ -67,28 +64,23 @@ const buttonStyles = {
     height: { xs: "40px", sm: "45px", md: "60px" },
     padding: { xs: "0.3% 3%", md: "1% 8%" },
     fontSize: { xs: "0.8rem", md: "1.2rem" },
-  }
+  },
 };
 
-// Reusable Slide Component
-const HeroSlide = ({ heading, subheading, image, translateX }) => (
+const HeroSlide = ({ heading, subheading, image, buttonText, translateX }) => (
   <Box sx={{ ...boxStyles.slide(translateX) }}>
     <img src={image} alt="background" style={imageStyles.imageContainer} />
     <Box sx={{ ...contentBoxStyles.contentBox, px: "5%" }}>
       <Grid container sx={{ py: { xs: 12, md: 27 } }}>
-        {/* left content */}
-        {/* PADDING RIGHT GPC KIYA HU, WESE ZADA THA */}
-        <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight:{md:6, xs:'5%'}, maxWidth:{md:'94%',xs:'94%'} }}>
-          {/* CHOTI SCREEENS K LIYE FONT SIZE UPAR NEECHE KRKE DEKH LENA */}
-          <Typography variant="h1" sx={{fontSize:{xs:'1.5rem', md:'4.2rem'}}}>{heading}</Typography>
-          <Typography variant="body1" sx={{ fontSize:{xs:'0.9rem',md:'1.2rem'}, fontWeight: '400', color: '#ffffffbf' }}>
+        <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight: { md: 6, xs: '5%' }, maxWidth: { md: '94%', xs: '94%' } }}>
+          <Typography variant="h1" sx={{ fontSize: { xs: '1.5rem', md: '4.2rem' } }}>{heading}</Typography>
+          <Typography variant="body1" sx={{ fontSize: { xs: '0.9rem', md: '1.2rem' }, fontWeight: '400', color: '#ffffffbf' }}>
             {subheading}
           </Typography>
         </Grid>
-        {/* right content */}
-        <Grid item md={5} xs={12} sx={{ py: { xs: 6, md: 14 }, paddingLeft:{md:2} }}>
-          <Button variant="contained" sx={{ ...buttonStyles.button, fontWeight: '550', display: 'flex', gap: {md:4,xs:1} }}>
-            Know more <EastIcon sx={{fontSize:{md:24,xs:12}}}/>
+        <Grid item md={5} xs={12} sx={{ py: { xs: 6, md: 14 }, paddingLeft: { md: 2 } }}>
+          <Button variant="contained" sx={{ ...buttonStyles.button, fontWeight: '550', display: 'flex', gap: { md: 4, xs: 1 } }}>
+            {buttonText} <EastIcon sx={{ fontSize: { md: 24, xs: 12 } }} />
           </Button>
         </Grid>
       </Grid>
@@ -112,7 +104,7 @@ function HeroSection() {
         setTranslateX2(100); // Move second slide out to the left
         setActiveSlide(1);
       }
-    }, 16000); // Change slide every 16 seconds
+    }, 8000); // Change slide every 16 seconds
 
     return () => clearInterval(interval);
   }, [activeSlide]);
@@ -133,21 +125,19 @@ function HeroSection() {
     <Box sx={boxStyles.boxContainer}>
       {/* First Slide */}
       <HeroSlide
-        heading="Business BOOST! Society™"
-        subheading="Welcome to Business BOOST! Society™. Join a community of like-minded business
-        owners committed to positive impact and sustainable growth. At Business BOOST!
-        Society™, we connect strategic vision with tangible results."
-        image="src/assets/heroSectionImages/website_background_hero.png"
+        heading={data.HeroSection.slides[0].heading}
+        subheading={data.HeroSection.slides[0].subheading}
+        image={data.HeroSection.slides[0].image}
+        buttonText={data.HeroSection.slides[0].buttonText}
         translateX={translateX1}
       />
 
       {/* Second Slide */}
       <HeroSlide
-        heading="BoostSociety.Ai"
-        subheading="We offer a cutting-edge platform for hosting various programs, featuring
-        expert-led cohorts & advanced tools. Explore dynamic partnership opportunities
-        and see how we can elevate your organization."
-        image="src/assets/heroSectionImages/hero_section_bg_img2.png"
+        heading={data.HeroSection.slides[1].heading}
+        subheading={data.HeroSection.slides[1].subheading}
+        image={data.HeroSection.slides[1].image}
+        buttonText={data.HeroSection.slides[1].buttonText}
         translateX={translateX2}
       />
 

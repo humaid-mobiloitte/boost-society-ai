@@ -1,5 +1,5 @@
 import { Box, Typography, Link, Grid } from "@mui/material";
-
+import { data } from "../data/data";
 const Footnote = () => {
   return (
     <Box
@@ -11,31 +11,31 @@ const Footnote = () => {
         px: "5%",
       }}
     >
-      <Grid container gap={{md:0,xs:2}}>
+      <Grid container gap={{ md: 0, xs: 2 }}>
         {/* Left Side - Copyright Info */}
-        <Grid item md={6} xs={12} >
+        <Grid item md={6} xs={12}>
           <Typography variant="body2" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
-            © 2023 Give Me a Boost | Integral Enterprise Limited
+            {data.footnote.copyright} {/* Use extracted text here */}
           </Typography>
         </Grid>
 
         {/* Right Side - Links */}
         <Grid item md={6} xs={12}>
-          <Box sx={{ display: "flex", gap: "5%",justifyContent:{md:'right'} }}>
+          <Box sx={{ display: "flex", gap: "5%", justifyContent: { md: 'right' } }}>
             <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
-              Terms & Conditions
-            </Link>
-            <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}> 
-              Privacy Policy
+              {data.footnote.links.terms} {/* Use extracted text here */}
             </Link>
             <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
-              Cookies Policies
+              {data.footnote.links.privacy} {/* Use extracted text here */}
             </Link>
             <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
-              FAQs
+              {data.footnote.links.cookies} {/* Use extracted text here */}
             </Link>
             <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
-              Contact Us
+              {data.footnote.links.faqs} {/* Use extracted text here */}
+            </Link>
+            <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
+              {data.footnote.links.contact} {/* Use extracted text here */}
             </Link>
           </Box>
         </Grid>

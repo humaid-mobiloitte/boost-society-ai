@@ -3,14 +3,15 @@ import BusinessIcon from "@mui/icons-material/Business";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import GavelIcon from "@mui/icons-material/Gavel";
 import EastIcon from '@mui/icons-material/East';
+import { data } from "../data/data";
 
 
-const features = [
-  { icon: <BusinessIcon />, title: "Monitor & Measure",content:'Feature: Track quantifiable and qualitative results to monitor progress and performance. Benefit: Make data-driven decisions and continuously improve your strategies by measuring the impact of your efforts.' },
-  { icon: <FavoriteIcon />, title: "Scheduling Functionality",content:'Feature: Schedule meetings and collaboration sessions between business owners and strategic advisors. Benefit: Optimize your time and enhance productivity by coordinating effectively with your advisors for regular check.' },
-  { icon: <GavelIcon />, title: "Cohort-based Learning",content:'Feature: Join exclusive cohorts led by industry experts to enhance your business skills and knowledge. Benefit: Collaborate with like-minded entrepreneurs and accelerate your business growth through expert guidance.' },
-  { icon: <BusinessIcon />, title: "Personalized Business",content:'Feature: Utilize our advanced AI-powered tool to identify the best funding opportunities tailored to your business needs. Benefit: Save time in securing capital by accessing a curated list of funding options that match.' },
-];
+// const features = [
+//   { icon: <BusinessIcon />, title: "Monitor & Measure",content:'Feature: Track quantifiable and qualitative results to monitor progress and performance. Benefit: Make data-driven decisions and continuously improve your strategies by measuring the impact of your efforts.' },
+//   { icon: <FavoriteIcon />, title: "Scheduling Functionality",content:'Feature: Schedule meetings and collaboration sessions between business owners and strategic advisors. Benefit: Optimize your time and enhance productivity by coordinating effectively with your advisors for regular check.' },
+//   { icon: <GavelIcon />, title: "Cohort-based Learning",content:'Feature: Join exclusive cohorts led by industry experts to enhance your business skills and knowledge. Benefit: Collaborate with like-minded entrepreneurs and accelerate your business growth through expert guidance.' },
+//   { icon: <BusinessIcon />, title: "Personalized Business",content:'Feature: Utilize our advanced AI-powered tool to identify the best funding opportunities tailored to your business needs. Benefit: Save time in securing capital by accessing a curated list of funding options that match.' },
+// ];
 
 export default function KeyFeatures() {
   return (
@@ -36,7 +37,7 @@ export default function KeyFeatures() {
         mb: 2 // Add margin-bottom for spacing
       }}
     >
-      Key Features & Benefits
+      {data.KeyFeatures.heading}
     </Typography>
     <Typography 
       variant="h3"  
@@ -45,7 +46,7 @@ export default function KeyFeatures() {
         mb: 2 // Add margin-bottom for spacing
       }}
     >
-      Unlock Exclusive Resources and Opportunities
+      {data.KeyFeatures.subheading}
     </Typography>
     <Typography 
       variant="body1"  
@@ -54,7 +55,7 @@ export default function KeyFeatures() {
         mb: 2 // Add margin-bottom for spacing
       }}
     >
-      Introducing the BoostSociety.ai portal - your gateway to advanced business and technical functionality. Partner with us to host your educational, community, and business programs on our platform, benefiting from dynamic, expert-led cohorts and innovative tools. Enhance learning with interactive courses, robust community features, and seamless communication.
+      {data.KeyFeatures.description}
     </Typography>
     <Button
       variant="contained"
@@ -66,7 +67,7 @@ export default function KeyFeatures() {
         gap: 1
       }}
     >
-      View All Features <EastIcon sx={{ fontSize: { md: 20, xs: 8 } }} />
+      {data.KeyFeatures.viewAllFeatures} <EastIcon sx={{ fontSize: { md: 20, xs: 8 } }} />
     </Button>
   </Grid>
 
@@ -80,7 +81,7 @@ export default function KeyFeatures() {
         mt: 2,
       }}
     >
-      {features.map((feature, index) => (
+      {data.KeyFeatures.features.map((feature, index) => (
         <Card
           key={index}
           sx={{
@@ -122,7 +123,7 @@ export default function KeyFeatures() {
                   mr: 1,
                 }}
               >
-                {feature.icon}
+                <BusinessIcon />
               </Box>
               <Typography variant="h6">{feature.title}</Typography>
             </Box>

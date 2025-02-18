@@ -1,6 +1,7 @@
 import { Box, Typography, TextField, Button, Grid, FormHelperText } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { data } from "../data/data";
 
 const SubscriptionSection = () => {
   const formik = useFormik({
@@ -9,8 +10,8 @@ const SubscriptionSection = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
+        .email(data.SubscriptionSection.emailValidationError)  // Use validation text from data
+        .required(data.SubscriptionSection.emailRequiredError), // Use validation text from data
     }),
     onSubmit: (values) => {
       // Handle subscription logic here
@@ -24,15 +25,15 @@ const SubscriptionSection = () => {
         backgroundColor: "#4F2D66",
         color: "white",
         px: '5%',
-        py: {md:'2%',xs:"10%"},
+        py: {md:'2%', xs:"10%"},
       }}
     >
-      <Grid item md={7} xs={12} sx={{ paddingRight: { xs: 0, md: '20%' },py: {md:'0',xs:"10%"} }}>
+      <Grid item md={7} xs={12} sx={{ paddingRight: { xs: 0, md: '20%' }, py: {md:'0', xs:"10%"} }}>
         <Typography variant="h4" fontWeight={700} gutterBottom>
-          Be The First To Know
+          {data.SubscriptionSection.heading}  {/* Use heading from data */}
         </Typography>
         <Typography variant="body1" sx={{ color: 'white' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          {data.SubscriptionSection.subheading}  {/* Use subheading from data */}
         </Typography>
       </Grid>
 
@@ -41,7 +42,7 @@ const SubscriptionSection = () => {
           <Box sx={{ flex: 1, position: 'relative' }}>
             <TextField
               variant="outlined"
-              placeholder="Enter your email address"
+              placeholder={data.SubscriptionSection.placeholder}  // Use placeholder from data
               name="email"
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -50,13 +51,12 @@ const SubscriptionSection = () => {
               sx={{
                 width: '100%',
                 borderRadius: 1,
-                backgroundColor: 'transparent', // Background color for valid field
+                backgroundColor: 'transparent',
                 '& .MuiOutlinedInput-root': {
-                  backgroundColor: 'white', // Ensure the input field background is white
+                  backgroundColor: 'white',
                 },
               }}
             />
-            {/* Add a fixed height container for the helper text to prevent layout shift */}
             <FormHelperText sx={{ height: '24px', position: 'absolute', bottom: '-24px', left: 0, color: 'red' }}>
               {formik.touched.email && formik.errors.email}
             </FormHelperText>
@@ -71,12 +71,12 @@ const SubscriptionSection = () => {
               py: 1.6,
               borderRadius: 1,
               textTransform: "none",
-              opacity: formik.isValid && formik.values.email ? 1 : 0.5,  // Activate only when valid email is entered
-              pointerEvents: formik.isValid && formik.values.email ? 'auto' : 'none', // Disable interaction for invalid email
+              opacity: formik.isValid && formik.values.email ? 1 : 0.5,
+              pointerEvents: formik.isValid && formik.values.email ? 'auto' : 'none',
             }}
             disabled={!formik.isValid || !formik.values.email}
           >
-            Subscribe
+            {data.SubscriptionSection.buttonText}  {/* Use button text from data */}
           </Button>
         </form>
       </Grid>

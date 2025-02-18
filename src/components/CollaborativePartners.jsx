@@ -4,57 +4,7 @@ import EastIcon from '@mui/icons-material/East';
 import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRounded';
 import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-
-const partners = [
-  {
-    name: "Mobiloitte Technologies",
-    description:
-      "Our partnership with Mobiloitte Technologies has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/mobiloitteIcon.png",
-  },
-  {
-    name: "Disney Enterprises",
-    description:
-      "Our partnership with Disney Enterprises has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/disneyIcon.png",
-  },
-  {
-    name: "LinkedIn",
-    description:
-      "Our partnership with LinkedIn has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/linkedInIcon.png",
-  },
-  {
-    name: "Mobiloitte Technologies",
-    description:
-      "Our partnership with Mobiloitte Technologies has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/mobiloitteIcon.png",
-  },
-  {
-    name: "LinkedIn",
-    description:
-      "Our partnership with LinkedIn has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/linkedInIcon.png",
-  },
-  {
-    name: "Mobiloitte Technologies",
-    description:
-      "Our partnership with Mobiloitte Technologies has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/mobiloitteIcon.png",
-  },
-  {
-    name: "Disney Enterprises",
-    description:
-      "Our partnership with Disney Enterprises has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/disneyIcon.png",
-  },
-  {
-    name: "LinkedIn",
-    description:
-      "Our partnership with LinkedIn has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-    logo: "src/assets/collaborativePartnerSection/linkedInIcon.png",
-  }
-];
+import { data } from "../data/data";
 
 const CollaborativePartners = () => {
   const [index, setIndex] = useState(0);
@@ -84,9 +34,9 @@ const CollaborativePartners = () => {
   const itemsPerPage = isLargeScreen ? 3.5 : isMediumScreen ? 2.5: isSmallScreen ? 1 : 1;
 
   const handleNext = () => {
-    if (index < partners.length && !transitioning) {
+    if (index < data.CollaborativePartners.partners.length && !transitioning) {
       setTransitioning(true);
-      setIndex((prevIndex) => Math.min(prevIndex + 1, partners.length-itemsPerPage));
+      setIndex((prevIndex) => Math.min(prevIndex + 1, data.CollaborativePartners.partners.length-itemsPerPage));
       // console.log(`I am next index ${index}`)
     }
   };
@@ -94,10 +44,10 @@ const CollaborativePartners = () => {
   return (
     <Box textAlign="center" position="relative" px="5%">
       <Typography variant="h3" fontWeight={600} py={5} sx={{ fontSize: { md: '2.5rem', xs: '1.5rem' } }}>
-        Collaborative Partners
+        {data.CollaborativePartners.heading}
       </Typography>
       <Typography variant="body1" mb={3} sx={{ fontSize: { md: '1.2rem', xs: '1rem' } }}>
-        Our collaborative projects have been at the forefront of innovation, solving complex challenges and achieving remarkable outcomes. Here are some notable projects we have undertaken in collaboration with our partners.
+        {data.CollaborativePartners.description}
       </Typography>
 
       <Box display="flex" alignItems="center" justifyContent="center">
@@ -134,7 +84,7 @@ const CollaborativePartners = () => {
               padding: '2% 0',
             }}
           >
-            {partners.map((partner, idx) => (
+            {data.CollaborativePartners.partners.map((partner, idx) => (
               <Card
                 key={idx}
                 sx={{
@@ -184,14 +134,14 @@ const CollaborativePartners = () => {
                     position: "relative",
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontSize: '1.2rem' }}>Learn more</Typography>
+                  <Typography variant="h6" sx={{ fontSize: '1.2rem' }}>{data.CollaborativePartners.learnMore}</Typography>
                   <EastIcon sx={{ fontSize: '1.2rem' }} />
                 </Box>
 
                 {/* Stroke Image positioned at the bottom left */}
                 <Box
                   component="img"
-                  src="src/assets/collaborativePartnerSection/corner_flick.png"
+                  src={data.CollaborativePartners.strokeImage}
                   sx={{
                     position: "absolute",
                     bottom: 0,
@@ -208,7 +158,7 @@ const CollaborativePartners = () => {
         {/* right arrow */}
         <IconButton 
           onClick={handleNext} 
-          disabled={index + itemsPerPage>= partners.length}
+          disabled={index + itemsPerPage>= data.CollaborativePartners.partners.length}
           sx={{ 
             bgcolor: "#D35400", 
             color: "white",
