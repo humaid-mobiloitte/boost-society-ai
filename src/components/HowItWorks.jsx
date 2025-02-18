@@ -21,15 +21,18 @@ const HowItWorks = () => {
     <Box 
       sx={{ 
         position: "relative", 
-        background: "url('src/assets/HowDoesItWork/background_blurred_image.png')", 
+        background: "url('src/assets/HowDoesItWork/HowItWorksUltimateBGimage.png')", 
+        backgroundRepeat:'no-repeat',
+        backgroundSize:'contain',
         color: "white", 
-        py: 15, 
+        py: 13, 
         px: '5%',
         overflow: "hidden", // Ensure the image doesn't overflow the container
+        // width:'100%'
       }}
     >
       {/* Translucent Layer */}
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           top: 0,
@@ -39,48 +42,52 @@ const HowItWorks = () => {
           backgroundColor: "rgba(77, 47, 97, 0.8)", // Adjust the opacity as needed
           zIndex: 1, // Ensure it's above the background but below other content
         }}
-      />
+      /> */}
 
       {/* Sticky Image */}
-      <Box
+      {/* <Box
         component="img"
         src="src/assets/HowDoesItWork/bottomRightStroke.png" // Replace with your image path
         alt="Sticky Image"
         sx={{
           position: "absolute",
-          right: 0,
+          
           bottom: 0,
-          width: "100%", // Adjust the size as needed
+          right:0,
+          // top:0,
+          width: "auto", // Adjust the size as needed
           height: "auto",
           zIndex: 2, // Ensure it's above the translucent layer
         }}
-      />
+      /> */}
 
       <Grid container spacing={4} alignItems="center" sx={{ position: "relative", zIndex: 3 }}>
         {/* Left Content */}
         <Grid item xs={12} md={6} sx={{color:'white'}}>
           <Typography sx={{ color:'white',fontSize:{xs:'0.9rem',md:'1.2rem'}}}>Next steps:</Typography>
-          <Typography sx={{fontSize:{xs:'1.5rem', md:'4.2rem'},color:'rgb(218, 100, 5)}}'}} gutterBottom>
+          <Typography sx={{fontSize:{xs:'1.5rem', md:'4.2rem'},color:'rgb(218, 100, 5)}}'}} >
             How Does It Work
           </Typography>
-          <ul>
+          <ul style={{listStyleType: 'none',paddingLeft:'4%'}}>
             <li>
-              For Prospective Partners:
-              <ol>
-                <li>Review the features and benefits on this page.</li>
-                <li>Email us with information regarding your interest in a strategic partnership. You can expect a follow-up within 48-72 business hours.</li>
-                <li>Join our vibrant community at BusinessBoostSociety.com to take advantage of personalized insights, expert advice, exclusive events, collaboration opportunities, and other resources.</li>
+              <Typography sx={{fontSize:{xs:'1rem', md:'2rem',color:'white',fontWeight:'600'}}} gutterBottom>
+                For Prospective Partners:
+              </Typography>
+              <ol style={{paddingLeft:'4%'}}>
+                <Typography sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}}><li>Review the features and benefits on this page.</li></Typography>
+                <Typography sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}}><li>Email us with information regarding your interest in a strategic partnership. You can expect a follow-up within 48-72 business hours.</li></Typography>
+                <Typography sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}} gutterBottom><li>Join our vibrant community at BusinessBoostSociety.com to take advantage of personalized insights, expert advice, exclusive events, collaboration opportunities, and other resources.</li></Typography>
               </ol>
             </li>
-          </ul>
-          <ul>
             <li>
-              For Students, Entrepreneurs, or Existing Business Owners Interested in a Cohort:
+              <Typography sx={{fontSize:{xs:'1rem', md:'2rem',color:'white',fontWeight:'600'}}} gutterBottom>
+                For Students, Entrepreneurs, or Existing Business Owners Interested in a Cohort:
+              </Typography>
             </li>
-            <ol>
-              <li>Review the features and benefits on this page.</li>
-              <li>Browse our list of cohorts, select a cohort and apply! You can expect a decision according to the info included in the application details.</li>
-              <li>Join BusinessBoostSociety.com for personalized insights, expert advice, exclusive events, and collaboration opportunities.</li>
+            <ol style={{paddingLeft:'4%'}}>
+              <Typography sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}}><li>Review the features and benefits on this page.</li></Typography>
+              <Typography sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}}><li>Browse our list of cohorts, select a cohort and apply! You can expect a decision according to the info included in the application details.</li></Typography>
+              <Typography sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}}><li>Join BusinessBoostSociety.com for personalized insights, expert advice, exclusive events, and collaboration opportunities.</li></Typography>
             </ol>
           </ul>
         </Grid>

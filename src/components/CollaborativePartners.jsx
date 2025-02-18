@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Card, CardContent, Button, useMediaQuery, Fade } from "@mui/material";
+import { Box, Typography, Card, CardContent, Button, useMediaQuery, Fade, IconButton } from "@mui/material";
 import EastIcon from '@mui/icons-material/East';
 import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRounded';
 import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
 const partners = [
   {
@@ -90,8 +91,6 @@ const CollaborativePartners = () => {
     }
   };
   
-
-  
   return (
     <Box textAlign="center" position="relative" px="5%">
       <Typography variant="h3" fontWeight={600} py={5} sx={{ fontSize: { md: '2.5rem', xs: '1.5rem' } }}>
@@ -103,18 +102,24 @@ const CollaborativePartners = () => {
 
       <Box display="flex" alignItems="center" justifyContent="center">
         {/* left arrow */}
-        <ArrowCircleLeftRoundedIcon
+        <IconButton 
           onClick={handlePrev}
           disabled={index === 0}
-          sx={{
-            fontSize: '3.2rem',
-            color: index === 0 ? "#f0ab69" : "#D76A03",
+          sx={{ 
+            bgcolor: "#D35400", 
+            color: "white",
             cursor: 'pointer',
             position: 'absolute',
             left: '4%',
-            zIndex: 1
+            zIndex: 1,
+            '&:hover': {
+              bgcolor: "#D35400", // Keep the same background color on hover
+              color: "white",    // Keep the same text color on hover
+            } 
           }}
-        />
+        >
+          <ArrowBackIos color="white"/>
+        </IconButton>
 
         {/* cards */}
         <Box
@@ -201,18 +206,24 @@ const CollaborativePartners = () => {
         </Box>
 
         {/* right arrow */}
-        <ArrowCircleRightRoundedIcon
-          onClick={handleNext}
+        <IconButton 
+          onClick={handleNext} 
           disabled={index + itemsPerPage>= partners.length}
-          sx={{
-            color: index + itemsPerPage>= partners.length ? "#f0ab69" : "#D76A03",
-            fontSize: '3.2rem',
+          sx={{ 
+            bgcolor: "#D35400", 
+            color: "white",
             cursor: 'pointer',
             position: 'absolute',
             right: '4%',
-            zIndex: 1
+            zIndex: 1,
+            '&:hover': {
+              bgcolor: "#D35400", // Keep the same background color on hover
+              color: "white",    // Keep the same text color on hover
+            } 
           }}
-        />
+          >
+          <ArrowForwardIos />
+        </IconButton>
       </Box>
     </Box>
   );

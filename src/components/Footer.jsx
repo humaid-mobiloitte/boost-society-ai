@@ -1,23 +1,23 @@
-import { Box, Typography, IconButton, Link } from "@mui/material";
+import { Box, Typography, IconButton, Link, Grid } from "@mui/material";
 import { Email, Language, Twitter, Instagram } from "@mui/icons-material";
 
 const Footer = () => {
   return (
-    <Box sx={{
+    <Grid container gap={{xs:3,sm:3,md:0}} sx={{
       display: "flex",
-      justifyContent: "space-between",
+      // justifyContent: "space-between",
       alignItems: "center",
       padding: "20px 5%",
       backgroundColor: "white",
       borderTop: "3px solid rgba(82, 49, 104, 1)",
     }}>
       {/* Left: Company Logo */}
-      <Box>
+      <Grid item md={4} xs={12} display={"flex"} justifyContent={{xs:"center",sm:'center',md:"left"}}>
         <img src="src/assets/footers/footer_logo.png" alt="Business Boost Society" style={{ height: 60 }} />
-      </Box>
+      </Grid>
 
       {/* Center: Social Icons & Navigation */}
-      <Box textAlign="center">
+      <Grid item md={4} xs={12} textAlign="center">
         <Box>
           <IconButton sx={{ color: "#D35400" }}><Email /></IconButton>
           <IconButton sx={{ color: "#D35400" }}><Language /></IconButton>
@@ -31,17 +31,19 @@ const Footer = () => {
           <Link href="#" underline="none" sx={{ mx: 1, color: "black" }}>Monitor & Measure</Link>
           <Link href="#" underline="none" sx={{ mx: 1, color: "black" }}>Contact Us</Link>
         </Box>
-      </Box>
+      </Grid>
 
       {/* Right: Contact Information */}
-      <Box textAlign="left">
-        <Typography fontWeight="bold">Contact Us</Typography>
-        <Typography>INTEGRAL ENTERPRISE LIMITED</Typography>
-        <Typography>Jadala Place, 1st Floor, Ngong Lane, Off Ngong Road</Typography>
-        <Typography>connect@enterprise.com</Typography>
-        <Typography>Tel: +254 797 771771</Typography>
-      </Box>
-    </Box>
+      <Grid item md={4} xs={12} textAlign={{md:"left",sm:'center',xs:'center'}} display={"flex"} justifyContent={{xs:"center",sm:'center',md:"right"}}>
+        <Box>
+          <Typography fontWeight="bold">Contact Us</Typography>
+          <Typography>INTEGRAL ENTERPRISE LIMITED</Typography>
+          <Typography>Jadala Place, 1st Floor, Ngong Lane, Off Ngong Road</Typography>
+          <Typography>connect@enterprise.com</Typography>
+          <Typography>Tel: +254 797 771771</Typography>
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
 

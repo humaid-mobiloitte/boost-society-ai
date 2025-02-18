@@ -1,4 +1,4 @@
-import { Box, Typography, TextField, Button, Grid } from "@mui/material";
+import { Box, Typography, TextField, Button, Grid, FormHelperText } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -24,10 +24,10 @@ const SubscriptionSection = () => {
         backgroundColor: "#4F2D66",
         color: "white",
         px: '5%',
-        py: '2%',
+        py: {md:'2%',xs:"10%"},
       }}
     >
-      <Grid item md={6} xs={12} sx={{ paddingRight: { xs: 0, md: '20%' } }}>
+      <Grid item md={7} xs={12} sx={{ paddingRight: { xs: 0, md: '20%' },py: {md:'0',xs:"10%"} }}>
         <Typography variant="h4" fontWeight={700} gutterBottom>
           Be The First To Know
         </Typography>
@@ -36,25 +36,31 @@ const SubscriptionSection = () => {
         </Typography>
       </Grid>
 
-      <Grid item md={6} xs={12} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingLeft: { xs: 0, md: '10%' }, gap: 2 }}>
-        <form onSubmit={formik.handleSubmit} style={{ display: "flex", width: "100%", position: 'relative' }}>
-          <TextField
-            variant="outlined"
-            placeholder="Enter your email address"
-            name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
-            sx={{
-              flex: 1,
-              minWidth: "250px",
-              height: "100%",
-              borderRadius: 1,
-              backgroundColor: formik.touched.email && formik.errors.email ? 'transparent' : 'white', // Background color for valid field
-            }}
-          />
+      <Grid item md={5} xs={12} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <form onSubmit={formik.handleSubmit} style={{ display: "flex", alignItems: 'center', width: "100%", gap: "2%" }}>
+          <Box sx={{ flex: 1, position: 'relative' }}>
+            <TextField
+              variant="outlined"
+              placeholder="Enter your email address"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              sx={{
+                width: '100%',
+                borderRadius: 1,
+                backgroundColor: 'transparent', // Background color for valid field
+                '& .MuiOutlinedInput-root': {
+                  backgroundColor: 'white', // Ensure the input field background is white
+                },
+              }}
+            />
+            {/* Add a fixed height container for the helper text to prevent layout shift */}
+            <FormHelperText sx={{ height: '24px', position: 'absolute', bottom: '-24px', left: 0, color: 'red' }}>
+              {formik.touched.email && formik.errors.email}
+            </FormHelperText>
+          </Box>
           <Button
             type="submit"
             variant="contained"
@@ -62,9 +68,9 @@ const SubscriptionSection = () => {
               background: "linear-gradient(to right, #E65100, #FF6D00)",
               color: "white",
               px: 3,
+              py: 1.6,
               borderRadius: 1,
               textTransform: "none",
-              height: "100%",
               opacity: formik.isValid && formik.values.email ? 1 : 0.5,  // Activate only when valid email is entered
               pointerEvents: formik.isValid && formik.values.email ? 'auto' : 'none', // Disable interaction for invalid email
             }}
@@ -73,24 +79,6 @@ const SubscriptionSection = () => {
             Subscribe
           </Button>
         </form>
-
-        {/* Error Message */}
-        {formik.touched.email && formik.errors.email && (
-          <Typography
-            variant="caption"
-            sx={{
-              position: "absolute",
-              bottom: "-20px", // Position the error message below the input field
-              left: 0,
-              color: 'red',
-              backgroundColor: 'transparent', // Ensures the background is transparent
-              paddingLeft: '8px',
-              fontSize: '0.75rem', // Adjust size as needed
-            }}
-          >
-            {formik.errors.email}
-          </Typography>
-        )}
       </Grid>
     </Grid>
   );

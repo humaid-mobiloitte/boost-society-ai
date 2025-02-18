@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Container, Typography, Card, CardContent, CardMedia, Button, Box, useMediaQuery } from "@mui/material";
+import { Container, Typography, Card, CardContent, CardMedia, Button, Box, useMediaQuery, IconButton } from "@mui/material";
 import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRounded';
 import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
 import EastIcon from '@mui/icons-material/East';
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
 
 const projects = [
@@ -76,18 +77,24 @@ const CollaborativeProjects = () => {
       {/* Navigation and Sliding Cards */}
       <Box display="flex" alignItems="center">
         {/* Left Arrow */}
-        <ArrowCircleLeftRoundedIcon
-            onClick={handlePrev}
-            disabled={index === 0}
-            sx={{
-              fontSize:'3.2rem',
-              color: index === 0 ? "#f0ab69" : "#D76A03",
-              cursor:'pointer',
-              position:'absolute',
-              left:'4%',
-              zIndex:1
-            }}
-          />
+        <IconButton 
+          onClick={handlePrev}
+          disabled={index === 0}
+          sx={{ 
+            bgcolor: "#D35400", 
+            color: "white",
+            cursor: 'pointer',
+            position: 'absolute',
+            left: '4%',
+            zIndex: 1,
+            '&:hover': {
+              bgcolor: "#D35400", // Keep the same background color on hover
+              color: "white",    // Keep the same text color on hover
+            } 
+          }}
+        >
+          <ArrowBackIos color="white"/>
+        </IconButton>
 
         {/* Card Slider */}
         <Box
@@ -151,18 +158,24 @@ const CollaborativeProjects = () => {
         </Box>
 
         {/* Right Arrow */}
-        <ArrowCircleRightRoundedIcon
-            onClick={handleNext}
-            disabled={index + itemsToShow >= projects.length}
-            sx={{
-              color: index + itemsToShow >= projects.length ? "#f0ab69" : "#D76A03",
-              fontSize:'3.2rem',
-              cursor:'pointer',
-              position:'absolute',
-              right:'4%',
-              zIndex:1
-            }}
-          />
+        <IconButton 
+          onClick={handleNext} 
+          disabled={index + itemsToShow>= projects.length}
+          sx={{ 
+            bgcolor: "#D35400", 
+            color: "white",
+            cursor: 'pointer',
+            position: 'absolute',
+            right: '4%',
+            zIndex: 1,
+            '&:hover': {
+              bgcolor: "#D35400", // Keep the same background color on hover
+              color: "white",    // Keep the same text color on hover
+            } 
+          }}
+          >
+          <ArrowForwardIos />
+        </IconButton>
       </Box>
     </Box>
   );

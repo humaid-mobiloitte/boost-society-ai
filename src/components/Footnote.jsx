@@ -11,7 +11,7 @@ const Footnote = () => {
         px: "5%",
       }}
     >
-      <Grid container gap={2} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
+      <Grid container gap={{md:0,xs:2}}>
         {/* Left Side - Copyright Info */}
         <Grid item md={6} xs={12} >
           <Typography variant="body2" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
@@ -21,7 +21,7 @@ const Footnote = () => {
 
         {/* Right Side - Links */}
         <Grid item md={6} xs={12}>
-          <Box sx={{ display: "flex", gap: 2 }}>
+          <Box sx={{ display: "flex", gap: "5%",justifyContent:{md:'right'} }}>
             <Link href="#" color="inherit" underline="hover" fontFamily="outfit" sx={{ fontSize: { md: '0.9rem', xs: '0.7rem' } }}>
               Terms & Conditions
             </Link>
