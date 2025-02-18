@@ -47,7 +47,7 @@ const TestimonialCarousel = () => {
       </Typography>
 
       {/* CAROUSEL */}
-      <Box display="flex" justifyContent="center" alignItems="center">
+      <Box display="flex" alignItems="center">
         <IconButton
           onClick={handlePrev}
           disabled={index === 0}
@@ -88,7 +88,7 @@ const TestimonialCarousel = () => {
                   backgroundColor: index % 2 === 0 ? '#e1e1e1' : 'rgba(82, 49, 104, 0.1)',
                   position: "relative",
                   overflow: "visible",
-                  width: { xs: "90vw", sm: '300px', md: "350px", lg: "420px" },
+                  width: { xs: "80vw", sm: '300px', md: "350px", lg: "420px" },
                   height: '300px',
                 }}
               >
@@ -102,8 +102,10 @@ const TestimonialCarousel = () => {
                     }}
                   />
                 </Box>
-
+                {/* COMMENT */}
                 <Typography variant="body1" mt={4}>{testimonial.text}</Typography>
+
+                {/* ADMI KA NAAM AUR DESIGNATION */}
                 <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20 }}>
                   {testimonial.name}, {testimonial.role}
                 </Typography>

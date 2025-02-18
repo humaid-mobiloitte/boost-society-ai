@@ -152,7 +152,7 @@ export const data={
           {
             name: "Michel",
             role: "Coordinator",
-            text: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the In publishing and graphic design, Lorem ipsum is a placeholder text commonly used.",
+            text: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the In publishing and graphic design.",
             img: "src/assets/testimonialCarousel/userImage.png",
           },
           {
