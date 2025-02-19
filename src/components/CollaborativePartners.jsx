@@ -21,12 +21,7 @@ const PartnerCard = ({ partner, idx }) => (
     sx={{
 // width: { xs: "85vw", sm: '85vw', md: "300px", lg: "90%" },
 // height: '360px',
-      // width: { xs: "85vw", sm: '85vw', md: "300px", lg: "90%" },
-      // height: '360px',
-      // width: { xs: "85vw", sm: '85vw', md: "300px", lg: "90%" },
-      // height: '360px',
       textAlign: "left",
-// p: { md: '5% 2% 6% 10%', sm: '0.5% 1.2% 1.2% 2%' },
 // p: { md: '5% 2% 6% 10%', sm: '0.5% 1.2% 1.2% 2%' },
       p: '3% 8% 6% 12.5%',
       boxShadow: 3,
@@ -37,7 +32,6 @@ const PartnerCard = ({ partner, idx }) => (
       position: "relative",
       borderRadius: "10px 10px 10px 0",
       backgroundColor: idx % 2 === 0 ? "rgba(82,49,104,0.15)" : "rgba(230, 143, 45, 0.15)",
-//       flexGrow:1
     }}
   >
     <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingLeft: 0, paddingBottom:'60px'}}>
@@ -59,7 +53,7 @@ const PartnerCard = ({ partner, idx }) => (
       <Typography variant="h6" sx={{ fontSize: '1.2rem' }}>{data.CollaborativePartners.learnMore}</Typography>
       <EastIcon sx={{ fontSize: '1.2rem' }} />
     </Box>
-{/* STROKE */}
+    {/* STROKE */}
     <Box component="img" src={data.CollaborativePartners.strokeImage} sx={{ position: "absolute", bottom: 0, left: 0}} />
   </Card>
 );
@@ -67,6 +61,7 @@ const PartnerCard = ({ partner, idx }) => (
 const CollaborativePartners = () => {
   const [swiperRef, setSwiperRef] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isEnd, setIsEnd] = useState(false);
 
   const handlePrev = () => {
     if (swiperRef) swiperRef.slidePrev();
@@ -78,6 +73,7 @@ const CollaborativePartners = () => {
 
   const handleSlideChange = (swiper) => {
     setCurrentIndex(swiper.activeIndex);
+    setIsEnd(swiper.isEnd);
   };
 
   return (
@@ -91,7 +87,7 @@ const CollaborativePartners = () => {
         {data.CollaborativePartners.description}
       </Typography>
 
-      <Box display="flex" alignItems="center" py={'0.5%'} >
+      <Box display="flex" alignItems="center"  >
         <IconButton
           onClick={handlePrev}
           aria-label="Previous"
@@ -127,6 +123,7 @@ const CollaborativePartners = () => {
             900: { slidesPerView: 2.5 },
             1200: { slidesPerView: 3.5 },
           }}
+          style={{padding:'2px'}}
         >
           {data.CollaborativePartners.partners.map((partner, idx) => (
             <SwiperSlide key={idx}>
@@ -137,7 +134,7 @@ const CollaborativePartners = () => {
         <IconButton
           onClick={handleNext}
           aria-label="Next"
-          disabled={currentIndex === data.CollaborativePartners.partners.length - 1}
+          disabled={isEnd}
           sx={{
             bgcolor: "#D35400",
             color: "white",
