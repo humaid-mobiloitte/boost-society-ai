@@ -6,13 +6,16 @@ import EastIcon from '@mui/icons-material/East';
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { data } from "../data/data";
 
+
 const CollaborativeProjects = () => {
   const [index, setIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 
+
   const isLargeScreen = useMediaQuery("(min-width:1200px)");
   const isMediumScreen = useMediaQuery("(min-width:900px) and (max-width:1199px)");
   const itemsToShow = isLargeScreen ? 3 : isMediumScreen ? 2 : 1;
+
 
   useEffect(() => {
     if (transitioning) {
@@ -21,6 +24,7 @@ const CollaborativeProjects = () => {
     }
   }, [transitioning]);
 
+
   const handlePrev = () => {
     if (index > 0 && !transitioning) {
       setTransitioning(true);
@@ -28,12 +32,14 @@ const CollaborativeProjects = () => {
     }
   };
 
+
   const handleNext = () => {
     if (index + itemsToShow < data.CollaborativeProjects.projects.length && !transitioning) {
       setTransitioning(true);
       setIndex((prevIndex) => Math.min(prevIndex + 1, data.CollaborativeProjects.projects.length - itemsToShow));
     }
   };
+
 
   return (
     <Box sx={{ position: "relative", textAlign: "center", py: 3, backgroundColor: "rgba(251, 251, 251, 1)", px: '5%' }}>
@@ -53,18 +59,20 @@ const CollaborativeProjects = () => {
       <Typography variant="h3" fontWeight={600} gutterBottom sx={{ fontSize: { md: '2.5rem', xs: '1.5rem' } }}>
         {data.CollaborativeProjects.heading}
       </Typography>
-      <Typography variant="body1" mx="auto" mb={3} sx={{ fontSize: { md: '1.2rem', xs: '1rem' } }}>
+      <Typography variant="body1" mx={{md:15,xs:0}} mb={3}  sx={{ fontSize: { md: '1.1rem', xs: '0.9rem' } }}>
         {data.CollaborativeProjects.description}
       </Typography>
 
+
       <Box display="flex" alignItems="center">
-        <IconButton 
+        <IconButton
           onClick={handlePrev}
           disabled={index === 0}
           sx={{ bgcolor: "#D35400", color: "white", cursor: 'pointer', position: 'absolute', left: '4%', zIndex: 1 }}
         >
           <ArrowBackIos color="white" />
         </IconButton>
+
 
         <Box display="flex" overflow="hidden">
           <Box display="flex" sx={{ transform: `translateX(-${index * 360}px)`, transition: transitioning ? "transform 0.3s ease-in-out" : "none", paddingTop: "1%", paddingBottom: "1%" }}>
@@ -85,8 +93,9 @@ const CollaborativeProjects = () => {
           </Box>
         </Box>
 
-        <IconButton 
-          onClick={handleNext} 
+
+        <IconButton
+          onClick={handleNext}
           disabled={index + itemsToShow >= data.CollaborativeProjects.projects.length}
           sx={{ bgcolor: "#D35400", color: "white", cursor: 'pointer', position: 'absolute', right: '4%', zIndex: 1 }}
         >
@@ -97,4 +106,8 @@ const CollaborativeProjects = () => {
   );
 };
 
+
 export default CollaborativeProjects;
+
+
+

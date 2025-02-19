@@ -19,12 +19,12 @@ const PartnerCard = ({ partner, idx }) => (
   <Card
     key={idx}
     sx={{
-// width: { xs: "85vw", sm: '85vw', md: "300px", lg: "90%" },
+    width: "80%",
 // height: '360px',
       textAlign: "left",
 // p: { md: '5% 2% 6% 10%', sm: '0.5% 1.2% 1.2% 2%' },
       p: '3% 8% 6% 12.5%',
-      boxShadow: 3,
+      // boxShadow: 1,
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
@@ -32,6 +32,9 @@ const PartnerCard = ({ partner, idx }) => (
       position: "relative",
       borderRadius: "10px 10px 10px 0",
       backgroundColor: idx % 2 === 0 ? "rgba(82,49,104,0.15)" : "rgba(230, 143, 45, 0.15)",
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderColor: 'rgba(82,49,104,0.15)',
     }}
   >
     <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingLeft: 0, paddingBottom:'60px'}}>
@@ -83,7 +86,7 @@ const CollaborativePartners = () => {
         {data.CollaborativePartners.heading}
       </Typography>
       {/* SUBHEADING */}
-      <Typography variant="body1" paddingBottom={5} sx={{ fontSize: { md: '1.2rem', xs: '1rem' } }}>
+      <Typography variant="body1" mx={{md:15,xs:0}} paddingBottom={5} sx={{ fontSize: { md: '1.1rem', xs: '0.9rem' } }}>
         {data.CollaborativePartners.description}
       </Typography>
 

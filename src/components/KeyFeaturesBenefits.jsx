@@ -32,9 +32,9 @@ export default function KeyFeatures() {
       variant="h6" 
       color="error"  
       sx={{
-        fontSize: '1.2rem',
-        // fontFamily: 'sans-serif',
-        mb: 2 // Add margin-bottom for spacing
+        fontSize: '1.4rem',
+        fontFamily: '"Alumni Sans", sans-serif', // Apply Alumni Sans font
+        mb: 1 // Add margin-bottom for spacing
       }}
     >
       {data.KeyFeatures.heading}

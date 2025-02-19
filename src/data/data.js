@@ -33,7 +33,7 @@ export const data={
       },
       CollaborativePartners: {
         heading: "Collaborative Partners",
-        description: "Our collaborative projects have been at the forefront of innovation, solving complex challenges and achieving remarkable outcomes. Here are some notable projects we have undertaken in collaboration with our partners.",
+        description: "Business Boost! Society is proud to collaborate with industry-leading partners who share our vision for innovation and excellence. These strategic partnerships allow us to combine our expertise and resources to deliver exceptional solutions to our clients. Here are some of our valued collaborative partners.",
         partners: [
           {
             name: "Mobiloitte Technologies",

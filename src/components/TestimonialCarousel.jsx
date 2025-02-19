@@ -3,6 +3,7 @@ import { Box, Typography, Card, CardContent, Avatar, useMediaQuery, IconButton }
 import { ArrowBackIos, ArrowForwardIos, FormatQuote } from "@mui/icons-material";
 import { data } from "../data/data";
 
+
 const TestimonialCarousel = () => {
   const isLargeScreen = useMediaQuery("(min-width:1200px)");  // lg and up
   const isMediumScreen = useMediaQuery("(min-width:900px) and (max-width:1199px)");  // md
@@ -10,8 +11,10 @@ const TestimonialCarousel = () => {
   const isExtraSmallScreen = useMediaQuery("(max-width:599px)");  // xs
   const itemsPerPage = isLargeScreen ? 3 : isMediumScreen ? 2 : isSmallScreen ? 1 : 1;
 
+
   const [index, setIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+
 
   useEffect(() => {
     if (transitioning) {
@@ -20,12 +23,14 @@ const TestimonialCarousel = () => {
     }
   }, [transitioning]);
 
+
   const handleNext = () => {
     if (index < data.testimonialCarousel.testimonials.length - itemsPerPage && !transitioning) {
       setTransitioning(true);
       setIndex((prevIndex) => Math.min(prevIndex + 1, data.testimonialCarousel.testimonials.length - itemsPerPage));
     }
   };
+
 
   const handlePrev = () => {
     if (index > 0 && !transitioning) {
@@ -34,6 +39,7 @@ const TestimonialCarousel = () => {
     }
   };
 
+
   return (
     <Box textAlign="center" position={"relative"} py={3} px={"5%"}>
       {/* MAIN HEADING */}
@@ -41,10 +47,12 @@ const TestimonialCarousel = () => {
         {data.testimonialCarousel.mainHeading}
       </Typography>
 
+
       {/* SUBHEADING */}
       <Typography variant="h3" fontWeight={600} py={3} sx={{ fontSize: { md: '2rem', xs: '1rem' } }}>
         {data.testimonialCarousel.subHeading}
       </Typography>
+
 
       {/* CAROUSEL */}
       <Box display="flex" alignItems="center">
@@ -66,6 +74,7 @@ const TestimonialCarousel = () => {
         >
           <ArrowBackIos color="white" />
         </IconButton>
+
 
         <Box display="flex" overflow="hidden">
           <Box
@@ -105,6 +114,7 @@ const TestimonialCarousel = () => {
                 {/* COMMENT */}
                 <Typography variant="body1" mt={4}>{testimonial.text}</Typography>
 
+
                 {/* ADMI KA NAAM AUR DESIGNATION */}
                 <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20 }}>
                   {testimonial.name}, {testimonial.role}
@@ -136,4 +146,6 @@ const TestimonialCarousel = () => {
   );
 };
 
+
 export default TestimonialCarousel;
+
