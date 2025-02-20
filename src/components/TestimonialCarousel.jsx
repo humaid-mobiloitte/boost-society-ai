@@ -1,47 +1,42 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, Card, CardContent, Avatar, useMediaQuery, IconButton } from "@mui/material";
-import { ArrowBackIos, ArrowForwardIos, FormatQuote } from "@mui/icons-material";
+import React, { useState } from "react";
+import { Box, Typography, Card, Avatar, IconButton, useMediaQuery } from "@mui/material";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import { data } from "../data/data";
 
 
 const TestimonialCarousel = () => {
+  const [swiperRef, setSwiperRef] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isEnd, setIsEnd] = useState(false);
+
+
   const isLargeScreen = useMediaQuery("(min-width:1200px)");  // lg and up
   const isMediumScreen = useMediaQuery("(min-width:900px) and (max-width:1199px)");  // md
   const isSmallScreen = useMediaQuery("(min-width:600px) and (max-width:899px)");  // sm
   const isExtraSmallScreen = useMediaQuery("(max-width:599px)");  // xs
-  const itemsPerPage = isLargeScreen ? 3 : isMediumScreen ? 2 : isSmallScreen ? 1 : 1;
-
-
-  const [index, setIndex] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
-
-
-  useEffect(() => {
-    if (transitioning) {
-      const timeout = setTimeout(() => setTransitioning(false), 300);
-      return () => clearTimeout(timeout);
-    }
-  }, [transitioning]);
-
-
-  const handleNext = () => {
-    if (index < data.testimonialCarousel.testimonials.length - itemsPerPage && !transitioning) {
-      setTransitioning(true);
-      setIndex((prevIndex) => Math.min(prevIndex + 1, data.testimonialCarousel.testimonials.length - itemsPerPage));
-    }
-  };
+  const itemsPerPage = isLargeScreen || isMediumScreen ? 3 : 1;
 
 
   const handlePrev = () => {
-    if (index > 0 && !transitioning) {
-      setTransitioning(true);
-      setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-    }
+    if (swiperRef) swiperRef.slidePrev();
+  };
+
+
+  const handleNext = () => {
+    if (swiperRef) swiperRef.slideNext();
+  };
+
+
+  const handleSlideChange = (swiper) => {
+    setCurrentIndex(swiper.activeIndex);
+    setIsEnd(swiper.isEnd);
   };
 
 
   return (
-    <Box textAlign="center" position={"relative"} py={3} px={"5%"}>
+    <Box textAlign="center" position={"relative"} py={3} px={"5%"} >
       {/* MAIN HEADING */}
       <Typography variant="h3" fontWeight={600} py={4} sx={{ fontSize: { md: '2.5rem', xs: '1.5rem' } }}>
         {data.testimonialCarousel.mainHeading}
@@ -49,7 +44,7 @@ const TestimonialCarousel = () => {
 
 
       {/* SUBHEADING */}
-      <Typography variant="h3" fontWeight={600} py={3} sx={{ fontSize: { md: '2rem', xs: '1rem' } }}>
+      <Typography variant="h3" fontWeight={600} paddingBottom={5} sx={{ fontSize: { md: '2rem', xs: '1rem' } }}>
         {data.testimonialCarousel.subHeading}
       </Typography>
 
@@ -58,47 +53,59 @@ const TestimonialCarousel = () => {
       <Box display="flex" alignItems="center">
         <IconButton
           onClick={handlePrev}
-          disabled={index === 0}
+          aria-label="Previous"
+          disabled={currentIndex === 0}
           sx={{
             bgcolor: "#D35400",
             color: "white",
             cursor: 'pointer',
             position: 'absolute',
             left: '4%',
-            zIndex: 1,
+            zIndex: 2,
             '&:hover': {
-              bgcolor: "#D35400", // Keep the same background color on hover
-              color: "white",    // Keep the same text color on hover
+              bgcolor: "#D35400",
+              color: "white",
+            },
+            '&.Mui-disabled': {
+              opacity: 0.5,
+              cursor: 'not-allowed',
             }
           }}
         >
-          <ArrowBackIos color="white" />
+          <ArrowBackIos />
         </IconButton>
 
 
-        <Box display="flex" overflow="hidden">
-          <Box
-            display="flex"
-            sx={{
-              transform: `translateX(-${index * (isLargeScreen ? 461 : isMediumScreen ? 381 : isSmallScreen ? 330 : isExtraSmallScreen ? (window.innerWidth * 0.94) : 180)}px)`, // Adjust translateX dynamically based on screen size
-              transition: transitioning ? "transform 0.3s ease-in-out" : "none",
-              padding: '4% 0',
-            }}
-          >
-            {data.testimonialCarousel.testimonials.map((testimonial, index) => (
+        <Swiper
+          onSwiper={setSwiperRef}
+          onSlideChange={handleSlideChange}
+          spaceBetween={'1%'}
+          slidesPerView={itemsPerPage}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
+        >
+          {data.testimonialCarousel.testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index} style={{paddingTop:55,paddingBottom:1}}>
               <Card
-                key={index}
                 sx={{
+                  backgroundColor: (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? "rgba(82, 49, 104, 0.1)" : "rgb(233, 233, 233)",
                   borderRadius: '16px',
                   p: 2,
+                  marginTop: isLargeScreen || isMediumScreen ?
+                  (index === (currentIndex + 1) % itemsPerPage ? 0 : 6) :
+                  2,
                   textAlign: "center",
                   boxShadow: 3,
-                  marginRight: '1%',
-                  backgroundColor: index % 2 === 0 ? '#e1e1e1' : 'rgba(82, 49, 104, 0.1)',
+                  // marginLeft:'20%',
+                  width: isLargeScreen || isMediumScreen ?
+                    (index === (currentIndex + 1) % itemsPerPage ? '97%' : '89%') :
+                    '84vw', // 85vw for smaller screens
                   position: "relative",
                   overflow: "visible",
-                  width: { xs: "80vw", sm: '300px', md: "350px", lg: "420px" },
-                  height: '300px',
+                  height: (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? '395px' : '300px',
+                  marginLeft: index === (currentIndex + 1) % itemsPerPage ? '-4%' : '0%',
                 }}
               >
                 {/* Overlay container */}
@@ -106,36 +113,45 @@ const TestimonialCarousel = () => {
                   <Avatar
                     src={testimonial.img}
                     sx={{
-                      width: 70,
-                      height: 70,
+                      width: {md:80,xs:40},
+                      height: {md:80,xs:40},
                     }}
                   />
                 </Box>
                 {/* COMMENT */}
-                <Typography variant="body1" mt={4}>{testimonial.text}</Typography>
+                <Typography variant="body1" fontSize={{md:'16px' ,xs:'12px'}} mt={4} color={"black"}>{testimonial.text}</Typography>
 
 
                 {/* ADMI KA NAAM AUR DESIGNATION */}
-                <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20 }}>
+                <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20, color: 'black' }}>
                   {testimonial.name}, {testimonial.role}
                 </Typography>
               </Card>
-            ))}
-          </Box>
-        </Box>
+
+
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+
         <IconButton
           onClick={handleNext}
-          disabled={index + itemsPerPage >= data.testimonialCarousel.testimonials.length}
+          aria-label="Next"
+          disabled={isEnd}
           sx={{
             bgcolor: "#D35400",
             color: "white",
             cursor: 'pointer',
             position: 'absolute',
             right: '4%',
-            zIndex: 1,
+            zIndex: 2,
             '&:hover': {
-              bgcolor: "#D35400", // Keep the same background color on hover
-              color: "white",    // Keep the same text color on hover
+              bgcolor: "#D35400",
+              color: "white",
+            },
+            '&.Mui-disabled': {
+              opacity: 0.5,
+              cursor: 'not-allowed',
             }
           }}
         >
@@ -148,4 +164,8 @@ const TestimonialCarousel = () => {
 
 
 export default TestimonialCarousel;
+
+
+
+
 

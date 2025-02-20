@@ -143,13 +143,13 @@ export const data={
           {
             name: "John Doe",
             role: "Project Manager",
-            text: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the use of typography.",
+            text: "Taking over my late father's construction business as a woman in a male-dominated industry is tough. This cohort provided me with the knowledge, connections & confidence needed to navigate city contracts which my father wanted to pursue. Thanks, BOOST!",
             img: "src/assets/testimonialCarousel/userImage.png",
           },
           {
             name: "Steve Smith",
             role: "HR Manager",
-            text: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the use of typography.",
+            text: "Being part of the BOOST! Your Business cohort has been incredible. The guidance and support from my BSA and others were invaluable in helping me achieve several business goals. Thanks to BOOST!, my Comfy Care products are now on Amazon!",
             img: "src/assets/testimonialCarousel/userImage.png",
           },
           {
