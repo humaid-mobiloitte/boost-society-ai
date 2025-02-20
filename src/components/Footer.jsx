@@ -2,6 +2,21 @@ import { Box, Typography, IconButton, Link, Grid } from "@mui/material";
 import { Email, Language, Twitter, Instagram } from "@mui/icons-material";
 import { data } from "../data/data";
 
+const SubscriptionSectionStyles={
+  IconButtonsStyle : {
+    color: "#D35400",
+  },
+  LinkStyle : {
+    mx: 1, 
+    color: "black", 
+    fontFamily:'outfit',
+    fontSize:'0.82rem'
+ },
+ RightContentStyle:{
+  fontSize:'0.82rem'
+ }
+}
+
 const Footer = () => {
   return (
     <Grid container gap={{xs:3,sm:3,md:0}} sx={{
@@ -19,28 +34,28 @@ const Footer = () => {
       {/* Center: Social Icons & Navigation */}
       <Grid item md={4} xs={12} textAlign="center">
         <Box>
-          <IconButton sx={{ color: "#D35400" }}><Email /></IconButton>
-          <IconButton sx={{ color: "#D35400" }}><Language /></IconButton>
-          <IconButton sx={{ color: "#D35400" }}><Twitter /></IconButton>
-          <IconButton sx={{ color: "#D35400" }}><Instagram /></IconButton>
+          <IconButton sx={SubscriptionSectionStyles.IconButtonsStyle}><Email /></IconButton>
+          <IconButton sx={SubscriptionSectionStyles.IconButtonsStyle}><Language /></IconButton>
+          <IconButton sx={SubscriptionSectionStyles.IconButtonsStyle}><Twitter /></IconButton>
+          <IconButton sx={SubscriptionSectionStyles.IconButtonsStyle}><Instagram /></IconButton>
         </Box>
         <Box mt={1}>
-          <Link href="#" underline="none" sx={{ mx: 1, color: "black" }}>{data.footer.navigationLinks.home}</Link>
-          <Link href="#" underline="none" sx={{ mx: 1, color: "black" }}>{data.footer.navigationLinks.aboutUs}</Link>
-          <Link href="#" underline="none" sx={{ mx: 1, color: "black" }}>{data.footer.navigationLinks.learningLives}</Link>
-          <Link href="#" underline="none" sx={{ mx: 1, color: "black" }}>{data.footer.navigationLinks.monitorMeasure}</Link>
-          <Link href="#" underline="none" sx={{ mx: 1, color: "black" }}>{data.footer.navigationLinks.contactUs}</Link>
+          <Link href="" underline="none" sx={SubscriptionSectionStyles.LinkStyle}>{data.footer.navigationLinks.home}</Link>
+          <Link href="" underline="none" sx={SubscriptionSectionStyles.LinkStyle}>{data.footer.navigationLinks.aboutUs}</Link>
+          <Link href="" underline="none" sx={SubscriptionSectionStyles.LinkStyle}>{data.footer.navigationLinks.learningLives}</Link>
+          <Link href="" underline="none" sx={SubscriptionSectionStyles.LinkStyle}>{data.footer.navigationLinks.monitorMeasure}</Link>
+          <Link href="" underline="none" sx={SubscriptionSectionStyles.LinkStyle}>{data.footer.navigationLinks.contactUs}</Link>
         </Box>
       </Grid>
 
       {/* Right: Contact Information */}
       <Grid item md={4} xs={12} textAlign={{md:"left",sm:'center',xs:'center'}} display={"flex"} justifyContent={{xs:"center",sm:'center',md:"right"}}>
         <Box>
-          <Typography fontWeight="bold">{data.footer.contactInfo.title}</Typography>
-          <Typography>{data.footer.contactInfo.companyName}</Typography>
-          <Typography>{data.footer.contactInfo.address}</Typography>
-          <Typography>{data.footer.contactInfo.email}</Typography>
-          <Typography>{data.footer.contactInfo.phone}</Typography>
+          <Typography fontWeight="bold" sx={{...SubscriptionSectionStyles.RightContentStyle,fontSize:'0.9rem'}}>{data.footer.contactInfo.title}</Typography>
+          <Typography sx={SubscriptionSectionStyles.RightContentStyle}>{data.footer.contactInfo.companyName}</Typography>
+          <Typography sx={SubscriptionSectionStyles.RightContentStyle}>{data.footer.contactInfo.address}</Typography>
+          <Typography sx={SubscriptionSectionStyles.RightContentStyle}>{data.footer.contactInfo.email}</Typography>
+          <Typography sx={SubscriptionSectionStyles.RightContentStyle}>{data.footer.contactInfo.phone}</Typography>
         </Box>
       </Grid>
     </Grid>

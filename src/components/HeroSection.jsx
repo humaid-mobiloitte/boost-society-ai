@@ -9,7 +9,7 @@ const boxStyles = {
     overflow: "hidden",
     position: "relative",
     width: "100%",
-    height: { lg: "90vh", md: "90vh", sm: '50vh', xs: '50vh' },
+    height: { lg: "84vh", md: "84vh", sm: '50vh', xs: '50vh' },
     right: 0,
   },
   slide: (translateX) => ({
@@ -71,14 +71,14 @@ const HeroSlide = ({ heading, subheading, image, buttonText, translateX }) => (
   <Box sx={{ ...boxStyles.slide(translateX) }}>
     <img src={image} alt="background" style={imageStyles.imageContainer} />
     <Box sx={{ ...contentBoxStyles.contentBox, px: "5%" }}>
-      <Grid container sx={{ py: { xs: 12, md: 27 } }}>
+      <Grid container sx={{ py: { xs: 12, md: 20 } }}>
         <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight: { md: 6, xs: '5%' }, maxWidth: { md: '94%', xs: '94%' } }}>
           <Typography variant="h1" sx={{ fontSize: { xs: '1.5rem', md: '4.2rem' } }}>{heading}</Typography>
           <Typography variant="body1" sx={{ fontSize: { xs: '0.9rem', md: '1.2rem' }, fontWeight: '400', color: '#ffffffbf' }}>
             {subheading}
           </Typography>
         </Grid>
-        <Grid item md={5} xs={12} sx={{ py: { xs: 6, md: 14 }, paddingLeft: { md: 2 } }}>
+        <Grid item md={5} xs={12} sx={{ py: { xs: 6, md: 18 }, paddingLeft: { md: 5 } }}>
           <Button variant="contained" sx={{ ...buttonStyles.button, fontWeight: '550', display: 'flex', gap: { md: 4, xs: 1 } }}>
             {buttonText} <EastIcon sx={{ fontSize: { md: 24, xs: 12 } }} />
           </Button>

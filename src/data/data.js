@@ -55,21 +55,6 @@ export const data={
             description: "Our partnership with Mobiloitte Technologies has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
             logo: "src/assets/collaborativePartnerSection/mobiloitteIcon.png",
           },
-          {
-            name: "Disney Enterprises",
-            description: "Our partnership with Disney Enterprises has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-            logo: "src/assets/collaborativePartnerSection/disneyIcon.png",
-          },
-          {
-            name: "Disney Enterprises",
-            description: "Our partnership with Disney Enterprises has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-            logo: "src/assets/collaborativePartnerSection/disneyIcon.png",
-          },
-          {
-            name: "LinkedIn",
-            description: "Our partnership with LinkedIn has been instrumental in driving technological advancements in our industry. Together, we have developed groundbreaking solutions that have revolutionized the way businesses operate.",
-            logo: "src/assets/collaborativePartnerSection/linkedInIcon.png",
-          }
         ],
         learnMore: "Learn more",
         strokeImage: "src/assets/collaborativePartnerSection/corner_flick.png"
@@ -99,7 +84,7 @@ export const data={
       KeyFeatures: {
         heading: "Key Features & Benefits",
         subheading: "Unlock Exclusive Resources and Opportunities",
-        description: "Introducing the BoostSociety.ai portal - your gateway to advanced business and technical functionality. Partner with us to host your educational, community, and business programs on our platform, benefiting from dynamic, expert-led cohorts and innovative tools. Enhance learning with interactive courses, robust community features, and seamless communication.",
+        description: "Introducing the BoostSociety.ai portal - your gateway to advanced business and technical functionality. Partner with us to host your educational, community, and business programs on our platform, benefiting from dynamic, expert-led cohorts and innovative tools. Enhance learning with interactive courses, robust community features, and seamless communication. Track progress efficiently and gain valuable insights with our monitoring tools. Elevate your organization and unlock your programs' full potential with BoostSociety.ai. Interested in joining one of our cohorts? Explore our offerings and apply TODAY!",
         viewAllFeatures: "View All Features",
         images: {
           topRightStroke: "src/assets/keyFeatures/topRightFlick.png",

@@ -4,6 +4,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import GavelIcon from "@mui/icons-material/Gavel";
 import EastIcon from '@mui/icons-material/East';
 import { data } from "../data/data";
+import truncateText from "./truncateFunction";
 
 
 // const features = [
@@ -27,14 +28,17 @@ export default function KeyFeatures() {
   }}
 >
   {/* Left Content */}
-  <Grid item xs={12} md={12} lg={6}>
+  <Grid item xs={12} md={12} lg={5}>
     <Typography 
       variant="h6" 
       color="error"  
       sx={{
-        fontSize: '1.4rem',
+        fontSize: '20px',
         fontFamily: '"Alumni Sans", sans-serif', // Apply Alumni Sans font
-        mb: 1 // Add margin-bottom for spacing
+        mb: 1, // Add margin-bottom for spacing
+        fontWeight: 500,
+        color:"rgb(251, 63, 16)",
+        letterSpacing: "0.00938em"
       }}
     >
       {data.KeyFeatures.heading}
@@ -43,7 +47,8 @@ export default function KeyFeatures() {
       variant="h3"  
       sx={{
         fontSize: { md: '2.5rem', xs: '1.5rem' },
-        mb: 2 // Add margin-bottom for spacing
+        mb: 2, // Add margin-bottom for spacing
+        lineHeight: 1.5
       }}
     >
       {data.KeyFeatures.subheading}
@@ -51,8 +56,10 @@ export default function KeyFeatures() {
     <Typography 
       variant="body1"  
       sx={{
-        fontSize: { md: '1.2rem', xs: '1rem' },
-        mb: 2 // Add margin-bottom for spacing
+        fontSize: { md: '1.1rem', xs: '1rem' },
+        fontWeight: 400,
+        mb: 2, // Add margin-bottom for spacing
+        color:'rgba(63, 60, 60, 0.87)'
       }}
     >
       {data.KeyFeatures.description}
@@ -72,13 +79,15 @@ export default function KeyFeatures() {
   </Grid>
 
   {/* Right Content (Feature Cards) */}
-  <Grid item xs={12} md={12} lg={6}>
+  <Grid item xs={12} md={12} lg={7}>
     <Box
       sx={{
         display: "grid",
         gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" }, // 1 column on xs, 2 columns on sm+
         gap: 6,
         mt: 2,
+        mx:{md:0,xs:5},
+        paddingRight:{md:'17%',sm:0,xs:0}
       }}
     >
       {data.KeyFeatures.features.map((feature, index) => (
@@ -86,9 +95,9 @@ export default function KeyFeatures() {
           key={index}
           sx={{
             p: 2,
-            borderRadius: 2,
-            boxShadow: 3,
-            bgcolor: "rgba(221, 221, 221, 1)", // Background color for all cards
+            borderRadius: '20px 16px 20px 20px',
+            boxShadow: 7,
+            bgcolor: "rgb(218, 218, 218)", // Background color for all cards
             position: "relative", // To position the stroke
             overflow: "hidden", // Ensures the stroke doesn't break layout
           }}
@@ -102,14 +111,14 @@ export default function KeyFeatures() {
               position: "absolute",
               top: 0,
               right: 0,
-              width: { xs: "30%", sm: "25%", md: "20%" }, // Responsive width
-              maxWidth: "80px", // Limits max size on large screens
-              height: "auto",
+              // width: { xs: "30%", sm: "25%", md: "20%" }, // Responsive width
+              // maxWidth: "80px", // Limits max size on large screens
+              // height: "auto",
             }}
           />
 
           <CardContent>
-            <Box sx={{ display: "flex",flexDirection:'column', alignItems: "left", mb: 1 }}>
+            <Box sx={{ display: "flex",flexDirection:'column', alignItems: "left",gap:1.5}}>
               <Box
                 sx={{
                   width: 40,
@@ -126,8 +135,8 @@ export default function KeyFeatures() {
                 <BusinessIcon />
               </Box>
               <Typography variant="h6">{feature.title}</Typography>
+              <Typography variant="body2">{truncateText(feature.content,200)}</Typography>
             </Box>
-            <Typography variant="body2">{feature.content}</Typography>
           </CardContent>
         </Card>
       ))}

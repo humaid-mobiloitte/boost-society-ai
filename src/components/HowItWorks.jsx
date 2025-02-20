@@ -25,34 +25,64 @@ const HowItWorks = () => {
       }}
     >
       <Grid container spacing={4} alignItems="center" sx={{ position: "relative", zIndex: 3 }}>
-        <Grid item xs={12} md={6} sx={{color:'white'}}>
-          <Typography sx={{ color:'white',fontSize:{xs:'0.9rem',md:'1.2rem'}}}>{data.HowItWorks.nextStepsLabel}</Typography>
-          <Typography sx={{fontSize:{xs:'1.5rem', md:'4.2rem'},color:'rgb(218, 100, 5)'}}>{data.HowItWorks.title}</Typography>
-          <ul style={{listStyleType: 'none',paddingLeft:'4%'}}>
+        <Grid item xs={12} md={6} sx={{ color: 'white' }}>
+          {/* NEXT STEPS */}
+          <Typography sx={{ color: 'white', fontSize: { xs: '0.9rem', md: '1.27rem' }, fontFamily: 'Alumni sans' }}>
+            {data.HowItWorks.nextStepsLabel}
+          </Typography>
+
+          {/* HOW DOES IT WORK */}
+          <Box sx={{ mb: { md: 1, sm: 0, xs: 0 } }}>
+            <Typography
+              sx={{
+                fontSize: { xs: '1.5rem', md: '58px' },
+                backgroundImage: 'linear-gradient(98deg, rgb(228, 103, 3) -1.68%, rgb(199, 52, 13) 103.45%)',
+                backgroundClip: 'text',
+                color: 'transparent',
+                display: 'inline-block', // Ensure the gradient applies correctly
+              }}
+            >
+              {data.HowItWorks.title}
+            </Typography>
+          </Box>
+
+          <ul style={{ paddingLeft: '4%', listStyleType: 'none' }}>
             <li>
-              <Typography sx={{fontSize:{xs:'1rem', md:'2rem',color:'white',fontWeight:'600'}}} gutterBottom>
-                {data.HowItWorks.prospectivePartnersTitle}
-              </Typography>
-              <ol style={{paddingLeft:'4%'}}>
-                {data.HowItWorks.prospectivePartnersList.map((item, index) => (
-                  <Typography key={index} sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}}>
-                    <li>{item}</li>
-                  </Typography>
-                ))}
-              </ol>
-            </li>
-            <li>
-              <Typography sx={{fontSize:{xs:'1rem', md:'2rem',color:'white',fontWeight:'600'}}} gutterBottom>
-                {data.HowItWorks.studentsEntrepreneursTitle}
-              </Typography>
-            </li>
-            <ol style={{paddingLeft:'4%'}}>
-              {data.HowItWorks.studentsEntrepreneursList.map((item, index) => (
-                <Typography key={index} sx={{fontSize:{xs:'0.6rem', md:'1.1rem',color:'white'}}}>
-                  <li>{item}</li>
+              {/* FOR PERSPECTIVE PARTNERS */}
+              <Box sx={{ mb: { md: 2, sm: 0, xs: 0 } }}>
+                <Typography sx={{ fontSize: { xs: '1rem', md: '2rem' }, color: 'white', fontWeight: '500' }} gutterBottom>
+                  {data.HowItWorks.prospectivePartnersTitle}
                 </Typography>
-              ))}
-            </ol>
+              </Box>
+              {/* SUBLIST PERSPECTIVE PARTNERS */}
+              <Box sx={{ mb: { md: 2, sm: 0, xs: 0 } }}>
+                <ol style={{ paddingLeft: '4%' }}>
+                  {data.HowItWorks.prospectivePartnersList.map((item, index) => (
+                    <Typography key={index} sx={{ fontSize: { xs: '0.6rem', md: '1.1rem' }, color: 'white', fontWeight: '500' }}>
+                      <li>{item}</li>
+                    </Typography>
+                  ))}
+                </ol>
+              </Box>
+            </li>
+            <li>
+              {/* FOR STUDENTS */}
+              <Box sx={{ mb: { md: 2, sm: 0, xs: 0 } }}>
+                <Typography sx={{ fontSize: { xs: '1rem', md: '2rem' }, color: 'white', fontWeight: '500' }} gutterBottom>
+                  {data.HowItWorks.studentsEntrepreneursTitle}
+                </Typography>
+              </Box>
+              {/* SUBLIST FOR STUDENTS */}
+              <Box sx={{ mb: { md: 1, sm: 0, xs: 0 } }}>
+                <ol style={{ paddingLeft: '4%' }}>
+                  {data.HowItWorks.studentsEntrepreneursList.map((item, index) => (
+                    <Typography key={index} sx={{ fontSize: { xs: '0.6rem', md: '1.1rem' }, color: 'white' }}>
+                      <li>{item}</li>
+                    </Typography>
+                  ))}
+                </ol>
+              </Box>
+            </li>
           </ul>
         </Grid>
 

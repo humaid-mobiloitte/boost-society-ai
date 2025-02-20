@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography, Button, Divider } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Button, Divider, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from './MenuIcon'; 
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import { data } from '../data/data';  // Importing the data
@@ -8,7 +8,8 @@ const TopNavbarStyles = {
   outerBox: {
     width: '100%',
     backgroundColor: 'white', // Optional: Set a background color for visibility
-    position: 'fixed', // Fixes the navbar to the top
+    position: 'sticky', // Fixes the navbar to the top
+    top:0,
     zIndex: 1000, // Ensures the navbar is above other content
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Softer shadow effect
   },
@@ -40,17 +41,13 @@ const TopNavbarStyles = {
     px: { xs: 1, md: 3 }, // Adjusted padding for different screen sizes
     fontSize: { xs: '0.62rem', md: '1rem' }, // Responsive font size
     height: { xs: '32px', md: '40px' }, // Responsive button height
-    // height:'auto'
-    // width:'auto'
   },
   signupButton: {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     color: 'black',
-    // borderRadius: '6px',
     px:1, // Adjusted padding for different screen sizes
     fontSize: { xs: '0.62rem', md: '1rem' }, // Responsive font size
     height: { xs: '32px', md: '40px' }, // Responsive button height
-    // minWidth: '90px', // Ensures "Sign up" stays in one line
     marginLeft:{xs:'none', md:2}
   },
   logo: {
@@ -61,9 +58,6 @@ const TopNavbarStyles = {
     display: { xs: 'flex', md: 'none' }, // Show on small screens only
     cursor: 'pointer',
     marginRight: '2%',
-    // minWidth: '40px', // Ensures clickable area for smaller screens
-    // YE CHOTI SCREEN PR LOGO AUR MENU ICON KI DISTANCE SMBHALEGA
-    // Adjust spacing between logo and menu icon
   },
   divider: {
     height: '24px', // Match the height of the links
@@ -72,11 +66,45 @@ const TopNavbarStyles = {
 };
 
 function TopNavbar() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const sidebarContent = (
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={toggleSidebar}
+      onKeyDown={toggleSidebar}
+    >
+      <List>
+        <ListItem button>
+          {/* <ListItemText primary={data.topNavbar.text.aboutUs} /> */}
+          <Typography>{data.topNavbar.text.aboutUs}</Typography>
+        </ListItem>
+        <ListItem button>
+          {/* <ListItemText primary={data.topNavbar.text.cohort} /> */}
+          <Typography>{data.topNavbar.text.cohort}</Typography>
+        </ListItem>
+        <ListItem button>
+          {/* <ListItemText primary={data.topNavbar.text.accelerator} /> */}
+          <Typography>{data.topNavbar.text.accelerator}</Typography>
+        </ListItem>
+        <ListItem button>
+          {/* <ListItemText primary={data.topNavbar.text.contactUs} /> */}
+          <Typography>{data.topNavbar.text.contactUs}</Typography>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
   return (
     <Box sx={TopNavbarStyles.outerBox}>
       <Box sx={TopNavbarStyles.innerBox}>
         <Box sx={{display:'flex',alignItems:'center', justifyContent:'center'}}>
-          <Box sx={TopNavbarStyles.menuIcon}>
+          <Box sx={TopNavbarStyles.menuIcon} onClick={toggleSidebar}>
             <MenuIcon color="black" size={14} />
           </Box>
           <Box sx={TopNavbarStyles.logo}>
@@ -89,13 +117,13 @@ function TopNavbar() {
         </Box>
 
         <Box sx={TopNavbarStyles.links}>
-          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.aboutUs}</Typography>
+          <Typography variant="body1" sx={{color:'black', fontWeight:400}}>{data.topNavbar.text.aboutUs}</Typography>
           <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
-          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.cohort}</Typography>
+          <Typography variant="body1" sx={{color:'black', fontWeight:400}}>{data.topNavbar.text.cohort}</Typography>
           <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
-          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.accelerator}</Typography>
+          <Typography variant="body1" sx={{color:'black', fontWeight:400}}>{data.topNavbar.text.accelerator}</Typography>
           <Divider orientation="vertical" flexItem sx={TopNavbarStyles.divider} />
-          <Typography variant="body1" sx={{color:'black'}}>{data.topNavbar.text.contactUs}</Typography>
+          <Typography variant="body1" sx={{color:'black', fontWeight:400}}>{data.topNavbar.text.contactUs}</Typography>
         </Box>
 
         <Box sx={TopNavbarStyles.actions}>
@@ -114,6 +142,10 @@ function TopNavbar() {
           </Box>
         </Box>
       </Box>
+
+      <Drawer anchor="left" open={isSidebarOpen} onClose={toggleSidebar}>
+        {sidebarContent}
+      </Drawer>
     </Box>
   );
 }

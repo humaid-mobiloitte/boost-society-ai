@@ -65,13 +65,13 @@ const SubscriptionSection = () => {
             type="submit"
             variant="contained"
             sx={{
-              background: "linear-gradient(to right, #E65100, #FF6D00)",
+              background: "linear-gradient(98deg, rgb(228, 103, 3) -1.68%, rgb(199, 52, 13) 103.45%)",
               color: "white",
               px: 3,
               py: 1.6,
               borderRadius: 1,
               textTransform: "none",
-              opacity: formik.isValid && formik.values.email ? 1 : 0.5,
+              opacity: formik.isValid && formik.values.email ? 1 : 0.9,
               pointerEvents: formik.isValid && formik.values.email ? 'auto' : 'none',
             }}
             disabled={!formik.isValid || !formik.values.email}

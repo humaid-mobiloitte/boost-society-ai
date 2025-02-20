@@ -59,7 +59,7 @@ const CollaborativeProjects = () => {
       <Typography variant="h3" fontWeight={600} gutterBottom sx={{ fontSize: { md: '2.5rem', xs: '1.5rem' } }}>
         {data.CollaborativeProjects.heading}
       </Typography>
-      <Typography variant="body1" mx={{md:15,xs:0}} mb={3}  sx={{ fontSize: { md: '1.1rem', xs: '0.9rem' } }}>
+      <Typography variant="body1" mx={{md:15,xs:0}} mb={3}  sx={{ fontSize: { md: '1.1rem', xs: '0.9rem' }, color:'rgba(63, 60, 60, 0.87)',fontWeight:400 }}>
         {data.CollaborativeProjects.description}
       </Typography>
 
