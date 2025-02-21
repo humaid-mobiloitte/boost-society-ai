@@ -9,7 +9,7 @@ const boxStyles = {
     overflow: "hidden",
     position: "relative",
     width: "100%",
-    height: { lg: "84vh", md: "84vh", sm: '50vh', xs: '50vh' },
+    height: { lg: "84vh", md: "84vh", sm: '50vh', xs: '40vh' },
     right: 0,
   },
   slide: (translateX) => ({
@@ -71,10 +71,10 @@ const HeroSlide = ({ heading, subheading, image, buttonText, translateX }) => (
   <Box sx={{ ...boxStyles.slide(translateX) }}>
     <img src={image} alt="background" style={imageStyles.imageContainer} />
     <Box sx={{ ...contentBoxStyles.contentBox, px: "5%" }}>
-      <Grid container sx={{ py: { xs: 12, md: 20 } }}>
-        <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight: { md: 6, xs: '5%' }, maxWidth: { md: '94%', xs: '94%' } }}>
-          <Typography variant="h1" sx={{ fontSize: { xs: '1.5rem', md: '4.2rem' } }}>{heading}</Typography>
-          <Typography variant="body1" sx={{ fontSize: { xs: '0.9rem', md: '1.2rem' }, fontWeight: '400', color: '#ffffffbf' }}>
+      <Grid container sx={{ py: { xs: 8, md: 20 } }}>
+        <Grid item md={7} xs={12} sx={{ color: "white", textAlign: "left", paddingRight: { md: 6, xs: '2%' }, maxWidth: { md: '94%', xs: '89%' } }}>
+          <Typography variant="h1" sx={{ fontSize: { xs: '1.5rem', md: '4.1rem' } }}>{heading}</Typography>
+          <Typography variant="body1" sx={{ fontSize: { xs: '0.8rem', md: '1.2rem' }, fontWeight: '400', color: '#ffffffbf' }}>
             {subheading}
           </Typography>
         </Grid>

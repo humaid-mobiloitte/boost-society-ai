@@ -11,7 +11,7 @@ const ProjectCard = ({ project, idx }) => (
   <Card
     key={idx}
     sx={{
-      width:{lg:"87%",md:"87%",sm:"79vw"},
+      width:{lg:"87%",md:"87%",sm:'84%',xs:"79vw"},
       minHeight: { md: "393px", sm: "340px", xs: "320px" },
       borderRadius: '20px',
       p: "4%",

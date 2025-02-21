@@ -94,7 +94,7 @@ export default function KeyFeatures() {
         <Card
           key={index}
           sx={{
-            p: 2,
+            p: 1.5,
             borderRadius: '20px 16px 20px 20px',
             boxShadow: 7,
             bgcolor: "rgb(218, 218, 218)", // Background color for all cards
@@ -118,7 +118,7 @@ export default function KeyFeatures() {
           />
 
           <CardContent>
-            <Box sx={{ display: "flex",flexDirection:'column', alignItems: "left",gap:1.5}}>
+            <Box sx={{ display: "flex",flexDirection:'column', alignItems: "left",gap:1}}>
               <Box
                 sx={{
                   width: 40,

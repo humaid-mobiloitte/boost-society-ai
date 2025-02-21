@@ -82,7 +82,7 @@ const TestimonialCarousel = () => {
         <Swiper
           onSwiper={setSwiperRef}
           onSlideChange={handleSlideChange}
-          spaceBetween={20}
+          spaceBetween={24}
           slidesPerView={itemsPerPage}
           navigation={{
             nextEl: '.swiper-button-next',
@@ -90,7 +90,9 @@ const TestimonialCarousel = () => {
           }}
         >
           {data.testimonialCarousel.testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index} style={{paddingTop:55,paddingBottom:1}}>
+            <SwiperSlide key={index} style={{
+              paddingTop:(isLargeScreen || isMediumScreen) ? 55:25,
+              paddingBottom:1}}>
               <Card
                 sx={{
                   backgroundColor: (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? "rgba(82, 49, 104, 0.1)" : "rgb(233, 233, 233)",
@@ -107,7 +109,7 @@ const TestimonialCarousel = () => {
                     '79vw', // 85vw for smaller screens
                   position: "relative",
                   overflow: "visible",
-                  height: isSmallScreen ? '25vh' : (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? '395px' : '300px',
+                  height: (isExtraSmallScreen||isSmallScreen) ? '25vh' : (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? '395px' : '300px',
                   marginLeft: isLargeScreen ? (index === (currentIndex + 1) % itemsPerPage ? '-4%' : '0%'):'0%',
                 }}
               >
@@ -116,19 +118,21 @@ const TestimonialCarousel = () => {
                   <Avatar
                     src={testimonial.img}
                     sx={{
-                      width: {md:80,xs:40},
-                      height: {md:80,xs:40},
+                      width: {md:70,xs:40},
+                      height: {md:70,xs:40},
                     }}
                   />
                 </Box>
-                {/* COMMENT */}
-                <Typography variant="body1" fontSize={{md:'14px' ,xs:'12px'}}  color={"black"}>{testimonial.text}</Typography>
+                <Box sx={{px:'7% '}}>
+                  {/* COMMENT */}
+                  <Typography variant="body1" fontSize={{md:'1rem' ,xs:'12px'}}  color={"black"} fontWeight={400}>{testimonial.text}</Typography>
 
 
-                {/* ADMI KA NAAM AUR DESIGNATION */}
-                <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20, color: 'black',fontSize:{md:'16px' ,xs:'10px'} }}>
-                  {testimonial.name}, {testimonial.role}
-                </Typography>
+                  {/* ADMI KA NAAM AUR DESIGNATION */}
+                  <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20, color: 'black',fontSize:{md:'16px' ,xs:'10px'} }}>
+                    {testimonial.name}, {testimonial.role}
+                  </Typography>
+                </Box>
               </Card>
 
 

@@ -141,20 +141,20 @@ export const data={
           {
             name: "Michel",
             role: "Coordinator",
-            text: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the In publishing and graphic design.",
-            img: "src/assets/testimonialCarousel/userImage.png",
+            text: "This cohort has been amazing! I am so more confident about myself as a leader and the direction of my business. Thank you, Business BOOST! Society!!!",
+            img: "https://storageboostaccount.blob.core.windows.net/test-container-new/1715111550471_blob",
           },
           {
             name: "John Doe",
             role: "Project Manager",
             text: "Taking over my late father's construction business as a woman in a male-dominated industry is tough. This cohort provided me with the knowledge, connections & confidence needed to navigate city contracts which my father wanted to pursue. Thanks, BOOST!",
-            img: "src/assets/testimonialCarousel/userImage.png",
+            img: "https://storageboostaccount.blob.core.windows.net/test-container-new/1721840222921_BeatrizWillington-construction.png",
           },
           {
             name: "Steve Smith",
             role: "HR Manager",
             text: "Being part of the BOOST! Your Business cohort has been incredible. The guidance and support from my BSA and others were invaluable in helping me achieve several business goals. Thanks to BOOST!, my Comfy Care products are now on Amazon!",
-            img: "src/assets/testimonialCarousel/userImage.png",
+            img: "https://storageboostaccount.blob.core.windows.net/test-container-new/1723667869953_TaNeshaJustice_ComfyCare_biopic.jpg",
           },
           {
             name: "Joe Root",
