@@ -102,15 +102,22 @@ const TestimonialCarousel = () => {
                   (index === (currentIndex + 1) % itemsPerPage ? 0 : 6) :
                   2,
                   textAlign: "center",
-                  boxShadow: 3,
+                  boxShadow: "rgba(0, 0, 0, 0.11) 0px 1px 1px, rgba(0, 0, 0, 0.11) 0px 2px 2px, rgba(0, 0, 0, 0.11) 0px 4px 4px, rgba(0, 0, 0, 0.11) 0px 6px 8px, rgba(0, 0, 0, 0.11) 0px 8px 16px",
                   // marginLeft:'20%',
-                  width: isLargeScreen || isMediumScreen ?
+                  width: isLargeScreen ?
                     (index === (currentIndex + 1) % itemsPerPage ? '97%' : '89%') :
+                    isMediumScreen ?
+                    (index === (currentIndex + 1) % itemsPerPage ? '96%' : '80%') :
                     '79vw', // 85vw for smaller screens
                   position: "relative",
                   overflow: "visible",
-                  height: (isExtraSmallScreen||isSmallScreen) ? '25vh' : (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? '395px' : '300px',
-                  marginLeft: isLargeScreen ? (index === (currentIndex + 1) % itemsPerPage ? '-4%' : '0%'):'0%',
+                  height: (isExtraSmallScreen||isSmallScreen) ? '25vh' : (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? '375px' : '300px',
+                  marginLeft: isLargeScreen ? 
+                    (index === (currentIndex + 1) % itemsPerPage ? '-4%' : '0%') :
+                    isMediumScreen ? 
+                    (index === (currentIndex + 1) % itemsPerPage ? '-8%' : '0%') :
+                    '0%',
+                  marginBottom:2
                 }}
               >
                 {/* Overlay container */}
@@ -123,13 +130,48 @@ const TestimonialCarousel = () => {
                     }}
                   />
                 </Box>
-                <Box sx={{px:'7% '}}>
+                <Box sx={{px:'7%'}}>
                   {/* COMMENT */}
-                  <Typography variant="body1" fontSize={{md:'1rem' ,xs:'12px'}}  color={"black"} fontWeight={400}>{testimonial.text}</Typography>
+                  <Typography
+                    variant="body1"
+                    fontSize={
+                      isLargeScreen ? 
+                        (index === (currentIndex + 1) % itemsPerPage ? '18px' : '16px') :
+                      isMediumScreen ? 
+                        (index === (currentIndex + 1) % itemsPerPage ? '16px' : '14px') :
+                      '12px'
+                    }
+                    fontWeight={
+                      isLargeScreen || isMediumScreen ? 
+                        (index === (currentIndex + 1) % itemsPerPage ? 500 : 400) :
+                      300
+                    }
+                    color={"black"}
+                    sx={{
+                      // maxHeight: "120px", // Constrains comment height
+                      overflow: "hidden", // Hides overflowing text
+                      textOverflow: "ellipsis", // Adds "..." for long text
+                      display: "-webkit-box",
+                      WebkitLineClamp: 5, // Limits to 5 lines
+                      WebkitBoxOrient: "vertical",
+                      wordBreak: "break-word", // Ensures long words break properly
+                    }}
+                  >{testimonial.text}</Typography>
 
 
                   {/* ADMI KA NAAM AUR DESIGNATION */}
-                  <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20, color: 'black',fontSize:{md:'16px' ,xs:'10px'} }}>
+                  <Typography fontSize={
+                      isLargeScreen ? 
+                        (index === (currentIndex + 1) % itemsPerPage ? '18px' : '16px') :
+                      isMediumScreen ? 
+                        (index === (currentIndex + 1) % itemsPerPage ? '16px' : '14px') :
+                      '12px'
+                    }
+                    fontWeight={
+                      isLargeScreen || isMediumScreen ? 
+                        (index === (currentIndex + 1) % itemsPerPage ? 500 : 400) :
+                      300
+                    } variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20, color: 'black'}}>
                     {testimonial.name}, {testimonial.role}
                   </Typography>
                 </Box>

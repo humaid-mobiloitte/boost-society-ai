@@ -8,43 +8,104 @@ import 'swiper/css';
 import { data } from "../data/data";
 import truncateText from "./truncateFunction";
 
+// Internal CSS styles
+const styles = {
+  card: (idx) => ({
+    width: "79%",
+    minHeight: { md: "373px", sm: "320px", xs: "300px" },
+    textAlign: "left",
+    p: { md: '2% 7% 5% 11%', xs: '1% 8% 3% 12.5%' },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    position: "relative",
+    borderRadius: "10px 10px 10px 0",
+    backgroundColor: idx % 2 === 0 ? "rgba(82,49,104,0.15)" : "rgba(230, 143, 45, 0.15)",
+    border: "1px solid #dcdcdc",
+  }),
+  cardContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 2,
+    paddingLeft: 0,
+  },
+  logoBox: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  textBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 2,
+  },
+  partnerName: {
+    fontSize: { md: '1.5rem', xs: '1rem' },
+  },
+  partnerDescription: {
+    fontSize: { md: '15px', sm: '0.8rem', xs: '0.8rem' },
+    color: 'rgba(63, 60, 60, 0.87)',
+    textAlign: 'justify',
+  },
+  learnMoreBox: {
+    display: "flex",
+    alignItems: 'center',
+    gap: 1,
+    color: '#542F03',
+  },
+  learnMoreText: {
+    fontSize: '1.2rem',
+  },
+  strokeImage: {
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+  },
+  swiperContainer: {
+    padding: '2px',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  iconButton: (position) => ({
+    bgcolor: "#D35400",
+    color: "white",
+    cursor: 'pointer',
+    position: 'absolute',
+    [position]: '4%',
+    zIndex: 2,
+    '&:hover': {
+      bgcolor: "#D35400",
+      color: "white",
+    },
+    '&.Mui-disabled': {
+      bgcolor: "#D35400",
+      color: "white",
+      opacity: 0.5,
+      cursor: 'not-allowed',
+    }
+  }),
+};
 
 const PartnerCard = ({ partner, idx }) => (
-  <Card
-    key={idx}
-    sx={{
-      width: "79%",
-      minHeight: { md: "373px", sm: "320px", xs: "300px" },
-      textAlign: "left",
-      p: { md: '2% 7% 5% 11%', xs: '1% 8% 3% 12.5%' },
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-      position: "relative",
-      borderRadius: "10px 10px 10px 0",
-      backgroundColor: idx % 2 === 0 ? "rgba(82,49,104,0.15)" : "rgba(230, 143, 45, 0.15)",
-      border: "1px solid #dcdcdc",
-    }}
-  >
-    <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingLeft: 0 }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+  <Card key={idx} sx={styles.card(idx)}>
+    <CardContent sx={styles.cardContent}>
+      <Box sx={styles.logoBox}>
         <img src={partner.logo} alt={partner.name} width="auto" height={window.innerWidth >= 768 ? 56 : 24} />
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <Typography variant="h5" fontWeight={600} sx={{ fontSize: { md: '1.5rem', xs: '1rem' } }}>
+      <Box sx={styles.textBox}>
+        <Typography variant="h5" fontWeight={600} sx={styles.partnerName}>
           {truncateText(partner.name, 12)}
         </Typography>
-        <Typography variant="body2" sx={{ fontSize: { md: '15px', sm: '0.8rem', xs: '0.8rem', color: 'rgba(63, 60, 60, 0.87)' }, textAlign: 'justify' }}>
+        <Typography variant="body2" sx={styles.partnerDescription}>
           {partner.description}
         </Typography>
       </Box>
     </CardContent>
-
-    <Box sx={{ display: "flex", alignItems: 'center', gap: 1, color: '#542F03' }}>
-      <Typography variant="h6" sx={{ fontSize: '1.2rem' }}>{data.CollaborativePartners.learnMore}</Typography>
-      <EastIcon sx={{ fontSize: '1.2rem' }} />
+    <Box sx={styles.learnMoreBox}>
+      <Typography variant="h6" sx={styles.learnMoreText}>{data.CollaborativePartners.learnMore}</Typography>
+      <EastIcon sx={styles.learnMoreText} />
     </Box>
-    <Box component="img" src={data.CollaborativePartners.strokeImage} sx={{ position: "fixed", bottom: 0, left: 0 }} />
+    <Box component="img" src={data.CollaborativePartners.strokeImage} sx={styles.strokeImage} />
   </Card>
 );
 
@@ -81,24 +142,7 @@ const CollaborativePartners = () => {
           onClick={handlePrev}
           aria-label="Previous"
           disabled={currentIndex === 0}
-          sx={{
-            bgcolor: "#D35400",
-            color: "white",
-            cursor: 'pointer',
-            position: 'absolute',
-            left: '4%',
-            zIndex: 2,
-            '&:hover': {
-              bgcolor: "#D35400",
-              color: "white",
-            },
-            '&.Mui-disabled': {
-              bgcolor: "#D35400",
-              color: "white",
-              opacity: 0.5,
-              cursor: 'not-allowed',
-            }
-          }}
+          sx={styles.iconButton('left')}
         >
           <ArrowBackIos />
         </IconButton>
@@ -114,7 +158,7 @@ const CollaborativePartners = () => {
             900: { slidesPerView: numPartners < 4 ? numPartners : 3 },
             1200: { slidesPerView: numPartners < 4 ? numPartners : 3.5 },
           }}
-          style={{ padding: '2px', display: 'flex', justifyContent: numPartners < 4 ? 'flex-start' : 'center' }}
+          style={styles.swiperContainer}
         >
           {data.CollaborativePartners.partners.map((partner, idx) => (
             <SwiperSlide key={idx} style={{ minWidth: numPartners < 4 ? '250px' : 'auto' }}>
@@ -127,24 +171,7 @@ const CollaborativePartners = () => {
           onClick={handleNext}
           aria-label="Next"
           disabled={isEnd}
-          sx={{
-            bgcolor: "#D35400",
-            color: "white",
-            cursor: 'pointer',
-            position: 'absolute',
-            right: '4%',
-            zIndex: 2,
-            '&:hover': {
-              bgcolor: "#D35400",
-              color: "white",
-            },
-            '&.Mui-disabled': {
-              bgcolor: "#D35400",
-              color: "white",
-              opacity: 0.5,
-              cursor: 'not-allowed',
-            }
-          }}
+          sx={styles.iconButton('right')}
         >
           <ArrowForwardIos />
         </IconButton>
