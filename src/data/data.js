@@ -79,6 +79,10 @@ export const data={
             image: "src/assets/collaborativeProjectSection/thirdCardImage.png",
             description: "In Publishing and Graphic Design, Lorem Ipsum is a placeholder text commonly used. In Publishing and Graphic Design, Lorem Ipsum is a placeholder text commonly used.",
           },
+          {
+            image: "src/assets/collaborativeProjectSection/thirdCardImage.png",
+            description: "In Publishing and Graphic Design, Lorem Ipsum is a placeholder text commonly used. In Publishing and Graphic Design, Lorem Ipsum is a placeholder text commonly used.",
+          },
         ],
       },
       KeyFeatures: {
@@ -91,22 +95,22 @@ export const data={
         },
         features: [
           {
-            // icon: <BusinessIcon />,
+            icon: "https://storageboostaccount.blob.core.windows.net/test-container-new/1721833931844_BoostSocietyiconheart.png",
             title: "Monitor & Measure",
             content: "Feature: Track quantifiable and qualitative results to monitor progress and performance. Benefit: Make data-driven decisions and continuously improve your strategies by measuring the impact of your efforts.",
           },
           {
-            // icon: <FavoriteIcon />,
+            icon: "https://storageboostaccount.blob.core.windows.net/test-container-new/1721833898565_BoostSocietyiconbriefcase.png",
             title: "Scheduling Functionality",
             content: "Feature: Schedule meetings and collaboration sessions between business owners and strategic advisors. Benefit: Optimize your time and enhance productivity by coordinating effectively with your advisors for regular check.",
           },
           {
-            // icon: <GavelIcon />,
+            icon: "https://storageboostaccount.blob.core.windows.net/test-container-new/1710158996288_Vector(24)(1).png",
             title: "Cohort-based Learning",
             content: "Feature: Join exclusive cohorts led by industry experts to enhance your business skills and knowledge. Benefit: Collaborate with like-minded entrepreneurs and accelerate your business growth through expert guidance.",
           },
           {
-            icon: "BusinessIcon",
+            icon: "https://storageboostaccount.blob.core.windows.net/test-container-new/1710158929754_Vector(24)(1).png",
             title: "Personalized Business",
             content: "Feature: Utilize our advanced AI-powered tool to identify the best funding opportunities tailored to your business needs. Benefit: Save time in securing capital by accessing a curated list of funding options that match.",
           },

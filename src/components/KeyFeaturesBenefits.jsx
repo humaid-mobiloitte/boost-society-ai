@@ -21,7 +21,7 @@ export default function KeyFeatures() {
   spacing={{md:16, xs:2}}
   sx={{
     px: "5%",
-    py:{md:'2%',xs:'7%'},
+    py:{md:'3%',xs:'7%'},
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -85,8 +85,8 @@ export default function KeyFeatures() {
         display: "grid",
         gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" }, // 1 column on xs, 2 columns on sm+
         gap: 6,
-        mt: 2,
-        mx:{md:0,xs:5},
+        // mt: 2,
+        mx:{md:0,xs:3},
         paddingRight:{md:'17%',sm:0,xs:0}
       }}
     >
@@ -126,16 +126,13 @@ export default function KeyFeatures() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  backgroundImage: "linear-gradient(98deg, rgb(228, 103, 3) -1.68%, rgb(199, 52, 13) 103.45%)",
-                  borderRadius: "50%",
-                  color: "white",
-                  mr: 1,
+                  // mr: 1,
                 }}
               >
-                <BusinessIcon />
+                <img src={feature.icon} alt="icon" srcset="" width={"100%"} />
               </Box>
-              <Typography variant="h6">{feature.title}</Typography>
-              <Typography variant="body2">{truncateText(feature.content,200)}</Typography>
+              <Typography variant="h6" sx={{fontSize:{md:'24px', sx:'18px'}}}>{truncateText(feature.title,19)}</Typography>
+              <Typography variant="body2" sx={{color:'rgba(0, 0, 0, 0.6)'}}>{truncateText(feature.content,200)}</Typography>
             </Box>
           </CardContent>
         </Card>

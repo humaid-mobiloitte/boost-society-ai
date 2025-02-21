@@ -1,48 +1,59 @@
-import React, { useState, useEffect } from "react";
-import { Container, Typography, Card, CardContent, CardMedia, Button, Box, useMediaQuery, IconButton } from "@mui/material";
-import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRounded';
-import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
+import React, { useState } from "react";
+import { Box, Typography, Card, CardContent, CardMedia, IconButton } from "@mui/material";
 import EastIcon from '@mui/icons-material/East';
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import { data } from "../data/data";
 
+const ProjectCard = ({ project, idx }) => (
+  <Card
+    key={idx}
+    sx={{
+      width:{lg:"87%",md:"87%",sm:"79vw"},
+      minHeight: { md: "393px", sm: "340px", xs: "320px" },
+      borderRadius: '20px',
+      p: "4%",
+      backgroundColor: "rgba(82, 49, 104, 1)",
+      // marginRight: "2.2rem",
+      position: "relative",
+    }}
+  >
+    <CardMedia component="img" height="60%" image={project.image} alt="Project" sx={{ borderRadius: '10px'}} />
+    <CardContent sx={{ padding: 0 }}>
+      <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: { md: '1rem', sm: '0.8rem', xs: '0.8rem' }, textAlign: 'justify', padding: '5% 0' }}>
+        {project.description}
+      </Typography>
+    </CardContent>
+    <Box sx={{ display: "flex", alignItems: 'center', gap: 1, color: '#FFBC6D', position: "relative" }}>
+      <Typography variant="h6" sx={{ fontSize: '1.2rem' }}>{data.CollaborativeProjects.learnMore}</Typography>
+      <EastIcon sx={{ fontSize: '1.2rem' }} />
+    </Box>
+  </Card>
+);
 
 const CollaborativeProjects = () => {
-  const [index, setIndex] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
-
-
-  const isLargeScreen = useMediaQuery("(min-width:1200px)");
-  const isMediumScreen = useMediaQuery("(min-width:900px) and (max-width:1199px)");
-  const itemsToShow = isLargeScreen ? 3 : isMediumScreen ? 2 : 1;
-
-
-  useEffect(() => {
-    if (transitioning) {
-      const timeout = setTimeout(() => setTransitioning(false), 300);
-      return () => clearTimeout(timeout);
-    }
-  }, [transitioning]);
-
+  const [swiperRef, setSwiperRef] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isEnd, setIsEnd] = useState(false);
 
   const handlePrev = () => {
-    if (index > 0 && !transitioning) {
-      setTransitioning(true);
-      setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-    }
+    if (swiperRef) swiperRef.slidePrev();
   };
-
 
   const handleNext = () => {
-    if (index + itemsToShow < data.CollaborativeProjects.projects.length && !transitioning) {
-      setTransitioning(true);
-      setIndex((prevIndex) => Math.min(prevIndex + 1, data.CollaborativeProjects.projects.length - itemsToShow));
-    }
+    if (swiperRef) swiperRef.slideNext();
   };
 
+  const handleSlideChange = (swiper) => {
+    setCurrentIndex(swiper.activeIndex);
+    setIsEnd(swiper.isEnd);
+  };
 
   return (
-    <Box sx={{ position: "relative", textAlign: "center", py: 3, backgroundColor: "rgba(251, 251, 251, 1)", px: '5%' }}>
+    <Box sx={{ position: "relative", textAlign: "center", paddingTop: '1%', paddingBottom: '1.5%', backgroundColor: "rgba(251, 251, 251, 1)", px: '5%' }}>
+      {/* PEECHE KA ORANGE STROKE */}
       <Box
         component="img"
         src={data.CollaborativeProjects.images.bottomStroke}
@@ -56,48 +67,82 @@ const CollaborativeProjects = () => {
           display: { xs: 'none', md: 'block' }
         }}
       />
-      <Typography variant="h3" fontWeight={600} gutterBottom sx={{ fontSize: { md: '2.5rem', xs: '1.5rem' } }}>
+      {/* HEADING */}
+      <Typography variant="h3" fontWeight={600} py={'2%'} sx={{ fontSize: { md: '2.5rem', xs: '1.5rem' } }}>
         {data.CollaborativeProjects.heading}
       </Typography>
-      <Typography variant="body1" mx={{md:15,xs:0}} mb={3}  sx={{ fontSize: { md: '1.1rem', xs: '0.9rem' }, color:'rgba(63, 60, 60, 0.87)',fontWeight:400 }}>
+      {/* SUBHEADING */}
+      <Typography variant="body1" mx={{ md: 15, xs: 0 }} paddingBottom={5} sx={{ fontSize: { md: '1.1rem', xs: '0.9rem' }, color: 'rgba(63, 60, 60, 0.87)', fontWeight: 400 }}>
         {data.CollaborativeProjects.description}
       </Typography>
 
-
-      <Box display="flex" alignItems="center">
+      <Box display="flex" alignItems="center" paddingBottom={"2%"}>
         <IconButton
           onClick={handlePrev}
-          disabled={index === 0}
-          sx={{ bgcolor: "#D35400", color: "white", cursor: 'pointer', position: 'absolute', left: '4%', zIndex: 1 }}
+          aria-label="Previous"
+          disabled={currentIndex === 0}
+          sx={{
+            bgcolor: "#D35400",
+            color: "white",
+            cursor: 'pointer',
+            position: 'absolute',
+            left: '4%',
+            zIndex: 2,
+            '&:hover': {
+              bgcolor: "#D35400",
+              color: "white",
+            },
+            '&.Mui-disabled': {
+              bgcolor: "#D35400",
+              color: "white",
+              opacity: 0.5,
+              cursor: 'not-allowed',
+            }
+          }}
         >
-          <ArrowBackIos color="white" />
+          <ArrowBackIos />
         </IconButton>
 
-
-        <Box display="flex" overflow="hidden">
-          <Box display="flex" sx={{ transform: `translateX(-${index * 360}px)`, transition: transitioning ? "transform 0.3s ease-in-out" : "none", paddingTop: "1%", paddingBottom: "1%" }}>
-            {data.CollaborativeProjects.projects.map((project, idx) => (
-              <Card key={idx} sx={{ width: { xs: "90vw", sm: '270px', md: "330px", lg: "400px" }, height: 'auto', borderRadius: 3, p: "1.5%", backgroundColor: "rgba(82, 49, 104, 1)", marginRight: "2.2rem", position: "relative" }}>
-                <CardMedia component="img" height="60%" image={project.image} alt="Project" sx={{ borderRadius: 2 }} />
-                <CardContent sx={{ padding: 0 }}>
-                  <Typography variant="body2" sx={{ color: 'white', fontSize: { md: '1rem', sm: '0.8rem', xs: '0.8rem' }, textAlign: 'justify', padding: '5% 0' }}>
-                    {project.description}
-                  </Typography>
-                </CardContent>
-                <Box sx={{ display: "flex", alignItems: 'center', gap: 1, color: '#FFBC6D', position: "relative" }}>
-                  <Typography variant="h6" sx={{ fontSize: '1.2rem' }}>{data.CollaborativeProjects.learnMore}</Typography>
-                  <EastIcon sx={{ fontSize: '1.2rem' }} />
-                </Box>
-              </Card>
-            ))}
-          </Box>
-        </Box>
-
+        <Swiper
+          onSwiper={setSwiperRef}
+          onSlideChange={handleSlideChange}
+          spaceBetween={10}
+          slidesPerView={1}
+          breakpoints={{
+            600: { slidesPerView: 1.5 },
+            900: { slidesPerView: 2.5 },
+            1200: { slidesPerView: 3.5 },
+          }}
+        >
+          {data.CollaborativeProjects.projects.map((project, idx) => (
+            <SwiperSlide key={idx}>
+              <ProjectCard project={project} idx={idx} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         <IconButton
           onClick={handleNext}
-          disabled={index + itemsToShow >= data.CollaborativeProjects.projects.length}
-          sx={{ bgcolor: "#D35400", color: "white", cursor: 'pointer', position: 'absolute', right: '4%', zIndex: 1 }}
+          aria-label="Next"
+          disabled={isEnd}
+          sx={{
+            bgcolor: "#D35400",
+            color: "white",
+            cursor: 'pointer',
+            position: 'absolute',
+            right: '4%',
+            zIndex: 2,
+            '&:hover': {
+              bgcolor: "#D35400",
+              color: "white",
+            },
+            '&.Mui-disabled': {
+              bgcolor: "#D35400",
+              color: "white",
+              opacity: 0.5,
+              cursor: 'not-allowed',
+            }
+          }}
         >
           <ArrowForwardIos />
         </IconButton>
@@ -105,7 +150,6 @@ const CollaborativeProjects = () => {
     </Box>
   );
 };
-
 
 export default CollaborativeProjects;
 

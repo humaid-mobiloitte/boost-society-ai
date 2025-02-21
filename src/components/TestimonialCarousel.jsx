@@ -60,6 +60,7 @@ const TestimonialCarousel = () => {
             color: "white",
             cursor: 'pointer',
             position: 'absolute',
+            top:'64%',
             left: '4%',
             zIndex: 2,
             '&:hover': {
@@ -67,6 +68,8 @@ const TestimonialCarousel = () => {
               color: "white",
             },
             '&.Mui-disabled': {
+              bgcolor: "#D35400",
+              color: "white",
               opacity: 0.5,
               cursor: 'not-allowed',
             }
@@ -79,7 +82,7 @@ const TestimonialCarousel = () => {
         <Swiper
           onSwiper={setSwiperRef}
           onSlideChange={handleSlideChange}
-          spaceBetween={'1%'}
+          spaceBetween={20}
           slidesPerView={itemsPerPage}
           navigation={{
             nextEl: '.swiper-button-next',
@@ -101,15 +104,15 @@ const TestimonialCarousel = () => {
                   // marginLeft:'20%',
                   width: isLargeScreen || isMediumScreen ?
                     (index === (currentIndex + 1) % itemsPerPage ? '97%' : '89%') :
-                    '84vw', // 85vw for smaller screens
+                    '79vw', // 85vw for smaller screens
                   position: "relative",
                   overflow: "visible",
-                  height: (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? '395px' : '300px',
-                  marginLeft: index === (currentIndex + 1) % itemsPerPage ? '-4%' : '0%',
+                  height: isSmallScreen ? '25vh' : (isLargeScreen || isMediumScreen) && index === (currentIndex + 1) % itemsPerPage ? '395px' : '300px',
+                  marginLeft: isLargeScreen ? (index === (currentIndex + 1) % itemsPerPage ? '-4%' : '0%'):'0%',
                 }}
               >
                 {/* Overlay container */}
-                <Box sx={{ position: "relative", width: "100%", display: 'flex', justifyContent: 'center', top: '-50px' }}>
+                <Box sx={{ position: "relative", width: "100%", display: 'flex', justifyContent: 'center', top: {md:'-50px',sm:'-40px',xs:'-40px'} }}>
                   <Avatar
                     src={testimonial.img}
                     sx={{
@@ -119,11 +122,11 @@ const TestimonialCarousel = () => {
                   />
                 </Box>
                 {/* COMMENT */}
-                <Typography variant="body1" fontSize={{md:'16px' ,xs:'12px'}} mt={4} color={"black"}>{testimonial.text}</Typography>
+                <Typography variant="body1" fontSize={{md:'14px' ,xs:'12px'}}  color={"black"}>{testimonial.text}</Typography>
 
 
                 {/* ADMI KA NAAM AUR DESIGNATION */}
-                <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20, color: 'black' }}>
+                <Typography variant="subtitle1" textAlign={"right"} sx={{ position: 'absolute', bottom: 20, right: 20, color: 'black',fontSize:{md:'16px' ,xs:'10px'} }}>
                   {testimonial.name}, {testimonial.role}
                 </Typography>
               </Card>
@@ -143,6 +146,7 @@ const TestimonialCarousel = () => {
             color: "white",
             cursor: 'pointer',
             position: 'absolute',
+            top:'64%',
             right: '4%',
             zIndex: 2,
             '&:hover': {
@@ -150,6 +154,8 @@ const TestimonialCarousel = () => {
               color: "white",
             },
             '&.Mui-disabled': {
+              bgcolor: "#D35400",
+              color: "white",
               opacity: 0.5,
               cursor: 'not-allowed',
             }

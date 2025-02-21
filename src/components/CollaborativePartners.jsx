@@ -14,7 +14,7 @@ const PartnerCard = ({ partner, idx }) => (
     key={idx}
     sx={{
       width: "79%",
-      minHeight: { md: "373px", sm: "300px", xs: "300px" },
+      minHeight: { md: "373px", sm: "320px", xs: "300px" },
       textAlign: "left",
       p: { md: '2% 7% 5% 11%', xs: '1% 8% 3% 12.5%' },
       display: "flex",
@@ -44,7 +44,7 @@ const PartnerCard = ({ partner, idx }) => (
       <Typography variant="h6" sx={{ fontSize: '1.2rem' }}>{data.CollaborativePartners.learnMore}</Typography>
       <EastIcon sx={{ fontSize: '1.2rem' }} />
     </Box>
-    <Box component="img" src={data.CollaborativePartners.strokeImage} sx={{ position: "absolute", bottom: 0, left: 0 }} />
+    <Box component="img" src={data.CollaborativePartners.strokeImage} sx={{ position: "fixed", bottom: 0, left: 0 }} />
   </Card>
 );
 
@@ -93,6 +93,8 @@ const CollaborativePartners = () => {
               color: "white",
             },
             '&.Mui-disabled': {
+              bgcolor: "#D35400",
+              color: "white",
               opacity: 0.5,
               cursor: 'not-allowed',
             }
@@ -104,7 +106,7 @@ const CollaborativePartners = () => {
         <Swiper
           onSwiper={setSwiperRef}
           onSlideChange={handleSlideChange}
-          spaceBetween={numPartners < 4 ? 16 : "2%"}
+          spaceBetween={numPartners < 4 ? 16 : 25}
           slidesPerView={numPartners < 4 ? numPartners : 1}
           breakpoints={{
             600: { slidesPerView: numPartners < 4 ? numPartners : 1.5 },
@@ -137,6 +139,8 @@ const CollaborativePartners = () => {
               color: "white",
             },
             '&.Mui-disabled': {
+              bgcolor: "#D35400",
+              color: "white",
               opacity: 0.5,
               cursor: 'not-allowed',
             }
